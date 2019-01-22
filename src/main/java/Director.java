@@ -1,19 +1,35 @@
 import org.apache.log4j.Logger;
 
-public class Director extends Employee{
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-    private Logger logger= Logger.getLogger(Director.class);
+public class Director extends Employee {
+    private Logger logger = Logger.getLogger(Director.class);
+
+    public List<Employee> listOfEmployees = new ArrayList();
 
     public void changeLocationOfServiceCenter() {
-        System.out.print("changeLocationOfServiceCenter");
+        logger.info("changeLocationOfServiceCenter");
     }
 
     public void hireEmployee() {
-        System.out.println("hireEmployee");
+        String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: "};
+        List<String> variablesForEmployee = new ArrayList();
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < arrayOfLabels.length; i++) {
+            System.out.println(arrayOfLabels[i]);
+            String buf = scanner.nextLine();
+            variablesForEmployee.add(buf);
+        }
+        scanner.close();
+        listOfEmployees.add(new Employee(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
+        System.out.println("Employee is hired");
     }
 
-    public void fireEmployee() {
-        System.out.println("fireEmployee");
+    public void fireEmployee(int indexOfEmploeeiNList) {
+        listOfEmployees.remove(indexOfEmploeeiNList);
+        System.out.println("Employee is fired");
     }
 
     public void payTax() {
@@ -26,7 +42,7 @@ public class Director extends Employee{
 
 
     public void getListOfEmployees() {
-        System.out.println("getListOfEmployees");
+        System.out.println(listOfEmployees);
     }
 
     public void increaseSalaryForEmployees() {
@@ -36,7 +52,6 @@ public class Director extends Employee{
     public void getRevenues() {
         System.out.println("getRevenues");
     }
-
 
 
 }

@@ -23,7 +23,6 @@ public class Administrator extends Employee {
         super(firstName, secondName, idNumber, salary);
     }
 
-
     Serviceman firstServiceman = new Serviceman("s1", "s1", "1", 1000);
     Serviceman secondServiceman = new Serviceman("s2", "s2", "2", 1200);
 

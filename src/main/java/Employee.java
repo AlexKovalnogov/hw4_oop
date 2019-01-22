@@ -1,4 +1,6 @@
-public  class Employee implements ActionsWithEquipment {
+import java.util.List;
+
+public class Employee implements ActionsWithEquipment {
 
     public String firstName;
     public String secondName;
@@ -13,10 +15,10 @@ public  class Employee implements ActionsWithEquipment {
         this.firstName = firstName;
         this.secondName = secondName;
         this.idNumber = idNumber;
-        this.salary=salary;
+        this.salary = salary;
     }
 
-    public void getEquipmentForFixing(Equipment equipment, Employee employee,Client client) {
+    public void getEquipmentForFixing(Equipment equipment, Employee employee, Client client) {
 
     }
 
