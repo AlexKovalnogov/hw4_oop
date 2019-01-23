@@ -10,7 +10,7 @@ public class Administrator extends Employee {
 
     private Logger logger = Logger.getLogger(Administrator.class);
 
-    public List<Double> moneyForFixing = new ArrayList();
+    public List<Double> earnedMoney = new ArrayList();
     public HashMap<String, String> clientIdEquipmentId = new HashMap();
     public HashMap<String, Client> clientIdClientInstance = new HashMap();
     public int amountFixedEquipment;
@@ -43,22 +43,30 @@ public class Administrator extends Employee {
     }
 
     public void getEquipmentForFixing(Equipment equipment, Employee administrator, Client client) {
-        addNewClient(client.secondName);
-        clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
-        clientIdClientInstance.put(client.idNumber, client);
-        infoAboutFixedEquipmentForReport(equipment);
+        addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment,client);
+        addInfoAboutFixedEquipmentForReport(equipment);
         giveEquipment(equipment,  administrator);
         logger.info("Administrator get equipment,calculate amount of money and move to service department");
 
     }
 
-    private void addNewClient(String clientSecondName) {
-        listOfClients.add(clientSecondName);
+    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment,Client client) {
+        listOfClients.add(client.secondName);
+        clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
+        clientIdClientInstance.put(client.idNumber, client);
     }
 
-    private void infoAboutFixedEquipmentForReport(Equipment equipment) {
+    private int addInfoAboutFixedEquipmentForReport(Equipment equipment) {
         amountFixedEquipment++;
-        moneyForFixing.add(equipment.getEquipmentPrice() * 0.1);
+        earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
+        return amountFixedEquipment;
+    }
+
+    public double getSummOfEarnedMoney() {
+        double sum = 0;
+        for (Double d : earnedMoney)
+            sum += d;
+        return sum;
 
     }
 

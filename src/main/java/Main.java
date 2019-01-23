@@ -28,7 +28,6 @@ public class Main {
         integers.add(1);
         integers.add(3);
         integers.add(3);*/
-
     //  new Director().hireEmployee();
 
         System.out.println("Input  position: 1)Director 2)Administrator 3)Serviceman 4) Client  0)Exit");
