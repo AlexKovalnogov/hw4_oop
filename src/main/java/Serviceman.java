@@ -20,7 +20,7 @@ public class Serviceman extends Employee {
     }
 
     public void giveEquipmetn(Equipment equipment, Administrator administrator) {
-     administrator.giveEquipmetn( equipment,administrator.clientIdClientInstanse.get(administrator.clientIdEquipmentId.get(equipment.equipmentId)));
+     administrator.giveEquipment( equipment);
         logger.info("Serviceman gives equipment to administrator");
     }
 

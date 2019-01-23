@@ -6,13 +6,13 @@ import java.util.HashSet;
 import java.util.List;
 
 
-public class Administrator extends Employee {
+public class Administrator extends Employee  {
 
     private Logger logger = Logger.getLogger(Administrator.class);
 
     public List<Double> moneyForFixing = new ArrayList();
     public HashMap<String, String> clientIdEquipmentId = new HashMap();
-    public HashMap<String, Client> clientIdClientInstanse = new HashMap();
+    public HashMap<String, Client> clientIdClientInstance = new HashMap();
     public int amountFixedEquipment;
     private HashSet<String> listOfClients = new HashSet<String>();
 
@@ -27,9 +27,15 @@ public class Administrator extends Employee {
     Serviceman secondServiceman = new Serviceman("s2", "s2", "2", 1200);
 
 
-    public void giveEquipmetn(Equipment equipment, Client client) {
-        client.getEquipmetn(equipment.equipmentId, client.idNumber);
+    public void giveEquipment(Equipment equipment) {
+        Client currentClient=getClient(equipment);
+        currentClient.getEquipment(equipment.equipmentId);
         logger.info("Administrator give equipment for client");
+    }
+
+    private Client getClient(Equipment equipment){
+      Client cl=  clientIdClientInstance.get(clientIdEquipmentId.get(equipment.equipmentId));
+        return cl;
     }
 
     public void giveEquipment(Equipment equipment, Administrator administrator) {
@@ -39,7 +45,7 @@ public class Administrator extends Employee {
     public void getEquipmentForFixing(Equipment equipment, Employee administrator, Client client) {
         addNewClient(client.secondName);
         clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
-        clientIdClientInstanse.put(client.idNumber, client);
+        clientIdClientInstance.put(client.idNumber, client);
         infoAboutFixedEquipmentForReport(equipment);
         giveEquipment(equipment, (Administrator) administrator);
         logger.info("Administrator get equipment,calculate amount of money and move to service department");

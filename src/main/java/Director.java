@@ -49,12 +49,15 @@ public class Director extends Employee {
         System.out.print("paySalary");
     }
 
-    public void getListOfEmployees() {
+    public List<Employee> getListOfEmployees() {
         System.out.println(listOfEmployees);
+        return listOfEmployees;
     }
 
-    public void increaseSalaryForEmployees() {
+    public void increaseSalaryForEmployees( ) {
+
         System.out.println("increaseSalaryForEmployees");
+
     }
 
     public void getRevenues() {

@@ -20,7 +20,7 @@ Logger logger= Logger.getLogger(Client.class);
         logger.info("Client give equipment to administrator");
     }
 
-    public void  getEquipmetn(String equipmentId,String clientID) {
+    public void getEquipment(String equipmentId) {
         logger.info("Client get fixed equipment");
     }
 
