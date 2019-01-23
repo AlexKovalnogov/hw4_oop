@@ -18,8 +18,8 @@ public class Main {
         listOfAdministrators.add(administrator2);
 
 
-        client1.giveEquipmetn(coffeMachine,administrator1,client1);
-        client2.giveEquipmetn(coffeMachine,administrator1,client2);
+        client1.giveEquipment(coffeMachine,administrator1,client1);
+        client2.giveEquipment(coffeMachine,administrator1,client2);
      ///administrator1.getListOfClients();
         administrator1.getReport();*/
 
@@ -29,16 +29,15 @@ public class Main {
         integers.add(3);
         integers.add(3);*/
 
-      new Director().hireEmployee();
-     /*
+    //  new Director().hireEmployee();
 
-        System.out.println("Input  position: 1)Director " + "\n" + "2)Administrator 3)Serviceman 4) Client  0)Exit");
+        System.out.println("Input  position: 1)Director 2)Administrator 3)Serviceman 4) Client  0)Exit");
 
         int position;
         Scanner scanner = new Scanner(System.in);
         position = scanner.nextInt();
         boolean exit = true;
-        while (exit)
+      //1  while (exit)
             switch (position) {
                 case 0: {
                     exit = false;
@@ -48,8 +47,7 @@ public class Main {
                 case 1: {
 
 
-                    break;
-                }
+                } break;
 
                 case 2: {
                     break;
@@ -61,10 +59,10 @@ public class Main {
 
                 case 4: {
 
-System.out.println("");
+
                     break;
                 }
-            }*/
+            }
 
     }
 }

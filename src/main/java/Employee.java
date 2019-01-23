@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Employee implements ActionsWithEquipment {
+public class Employee  implements ActionsWithEquipment{
 
     public String firstName;
     public String secondName;
@@ -18,17 +18,17 @@ public class Employee implements ActionsWithEquipment {
         this.salary = salary;
     }
 
-    public void getEquipmentForFixing(Equipment equipment, Employee employee, Client client) {
+  public void getEquipmentForFixing(Equipment equipment, Employee employee, Client client) {
 
     }
 
-  /*  public void giveEquipmetn() {
-        System.out.print("giveEquipmetn");
+   public void giveEquipmetn(Equipment equipment) {
+        System.out.print("giveEquipment");
     }
 
-    public void getEquipmetn() {
-        System.out.print("giveEquipmetn");
-    }*/
+    public void getEquipmetn(Equipment equipment) {
+        System.out.print("giveEquipment");
+    }
 
 
 }

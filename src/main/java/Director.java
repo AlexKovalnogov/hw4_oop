@@ -13,7 +13,7 @@ public class Director extends Employee {
         logger.info("changeLocationOfServiceCenter");
     }
 
-    public void hireEmployee() {
+    public void hireEmployee(StaffPositionInServiceCentre position) {
         String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: "};
         List<String> variablesForEmployee = new ArrayList();
         Scanner scanner = new Scanner(System.in);
@@ -23,14 +23,23 @@ public class Director extends Employee {
             variablesForEmployee.add(buf);
         }
         scanner.close();
-        listOfEmployees.add(new Employee(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
-        System.out.println("Employee is hired");
+        switch (position) {
+            case ADMINISTRATOR:
+                listOfEmployees.add(new Administrator(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
+                break;
+            case SERVICEMAN:
+                listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
+                break;
+        }
+        logger.info("Employee is hired");
     }
 
-    public void fireEmployee(int indexOfEmploeeiNList) {
-        listOfEmployees.remove(indexOfEmploeeiNList);
-        System.out.println("Employee is fired");
+
+    public void fireEmployee(int indexOfEmployeeInList) {
+        listOfEmployees.remove(indexOfEmployeeInList);
+        logger.info("Employee" + indexOfEmployeeInList + " is fired");
     }
+
 
     public void payTax() {
         System.out.print("payTax");
@@ -39,7 +48,6 @@ public class Director extends Employee {
     public void paySalary() {
         System.out.print("paySalary");
     }
-
 
     public void getListOfEmployees() {
         System.out.println(listOfEmployees);
