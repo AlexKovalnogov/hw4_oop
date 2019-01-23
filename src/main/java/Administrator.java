@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 
-public class Administrator extends Employee  {
+public class Administrator extends Employee {
 
     private Logger logger = Logger.getLogger(Administrator.class);
 
@@ -28,17 +28,17 @@ public class Administrator extends Employee  {
 
 
     public void giveEquipment(Equipment equipment) {
-        Client currentClient=getClient(equipment);
+        Client currentClient = getClient(equipment);
         currentClient.getEquipment(equipment.equipmentId);
         logger.info("Administrator give equipment for client");
     }
 
-    private Client getClient(Equipment equipment){
-      Client cl=  clientIdClientInstance.get(clientIdEquipmentId.get(equipment.equipmentId));
+    private Client getClient(Equipment equipment) {
+        Client cl = clientIdClientInstance.get(clientIdEquipmentId.get(equipment.equipmentId));
         return cl;
     }
 
-    public void giveEquipment(Equipment equipment, Administrator administrator) {
+    public void giveEquipment(Equipment equipment, Employee administrator) {
         firstServiceman.fixProblemWithEquipment(equipment, administrator);
     }
 
@@ -47,7 +47,7 @@ public class Administrator extends Employee  {
         clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
         clientIdClientInstance.put(client.idNumber, client);
         infoAboutFixedEquipmentForReport(equipment);
-        giveEquipment(equipment, (Administrator) administrator);
+        giveEquipment(equipment,  administrator);
         logger.info("Administrator get equipment,calculate amount of money and move to service department");
 
     }
@@ -56,17 +56,18 @@ public class Administrator extends Employee  {
         listOfClients.add(clientSecondName);
     }
 
-    public void getListOfClients() {
-        System.out.println(listOfClients);
-    }
-
     private void infoAboutFixedEquipmentForReport(Equipment equipment) {
         amountFixedEquipment++;
         moneyForFixing.add(equipment.getEquipmentPrice() * 0.1);
 
     }
 
-    public void  getReport() {
+    public void getListOfClients() {
+        System.out.println(listOfClients);
+
+    }
+
+    public void getReport() {
         logger.info("amount of Fixed Equipment " + amountFixedEquipment);
     }
 

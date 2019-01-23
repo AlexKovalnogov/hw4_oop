@@ -8,6 +8,7 @@ public class Director extends Employee {
     private Logger logger = Logger.getLogger(Director.class);
 
     public List<Employee> listOfEmployees = new ArrayList();
+    public static final double PERSENT_INCREASING_SALARY = 0.2;
 
     public void changeLocationOfServiceCenter() {
         logger.info("changeLocationOfServiceCenter");
@@ -34,12 +35,10 @@ public class Director extends Employee {
         logger.info("Employee is hired");
     }
 
-
     public void fireEmployee(int indexOfEmployeeInList) {
         listOfEmployees.remove(indexOfEmployeeInList);
         logger.info("Employee" + indexOfEmployeeInList + " is fired");
     }
-
 
     public void payTax() {
         System.out.print("payTax");
@@ -54,7 +53,12 @@ public class Director extends Employee {
         return listOfEmployees;
     }
 
-    public void increaseSalaryForEmployees( ) {
+    public void increaseSalaryForEmployees() {
+
+        List<Employee> listOfEmployee = getListOfEmployees();
+        for (Employee empl : listOfEmployee) {
+            empl.salary = empl.salary * PERSENT_INCREASING_SALARY;
+        }
 
         System.out.println("increaseSalaryForEmployees");
 
