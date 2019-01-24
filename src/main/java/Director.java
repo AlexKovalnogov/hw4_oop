@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Scanner;
 //package  Administrator.class;
 
-public class Director extends Employee implements Payment{
+public class Director extends Employee implements Payment {
     private Logger logger = Logger.getLogger(Director.class);
 
-  //  public List<Employee> listOfEmployees = new ArrayList();
+
     public static final double PERSENT_INCREASING_SALARY = 0.2;
-    public static final double PERSENT_TAX= 0.1;
+    public static final double PERSENT_TAX = 0.1;
 
 
     public Director() {

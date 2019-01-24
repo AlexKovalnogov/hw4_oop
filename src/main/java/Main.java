@@ -26,20 +26,20 @@ public class Main {
 
 
         client1.giveEquipment(coffeMachine, administrator1, client1);
-        client1.giveEquipment(coffeMachine, administrator1, client1);
+
         client2.giveEquipment(coffeMachine, administrator1, client2);
         administrator1.getReport();
 
 
 
+director.getListOfEmployees();
+administrator1.getListOfClients();
 
 
 
 
 
-
-
-
+/*
         System.out.println("Input  position: 1)Director 2)Administrator 3)Serviceman 4) Client  0)Exit");
 
         int position;
@@ -72,7 +72,7 @@ public class Main {
 
                 break;
             }
-        }
+        }*/
 
     }
 }
