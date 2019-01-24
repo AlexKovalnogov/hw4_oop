@@ -15,7 +15,7 @@ Logger logger= Logger.getLogger(Client.class);
         this.idNumber = idNumber;
     }
 
-    public void giveEquipmetn(Equipment equipment , Employee administrator,Client client) {
+    public void giveEquipment(Equipment equipment , Employee administrator, Client client) {
      administrator.getEquipmentForFixing(equipment,administrator,client);
         logger.info("Client give equipment to administrator");
     }

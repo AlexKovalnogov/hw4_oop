@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Employee implements ActionsWithEquipment{
@@ -6,6 +7,7 @@ public class Employee implements ActionsWithEquipment{
     public String secondName;
     public String idNumber;
     public double salary;
+    public List<Employee> listOfEmployees = new ArrayList();
 
     public Employee() {
 

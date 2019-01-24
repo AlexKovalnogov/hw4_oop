@@ -3,13 +3,22 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+//package  Administrator.class;
 
 public class Director extends Employee implements Payment{
     private Logger logger = Logger.getLogger(Director.class);
 
-    public List<Employee> listOfEmployees = new ArrayList();
+  //  public List<Employee> listOfEmployees = new ArrayList();
     public static final double PERSENT_INCREASING_SALARY = 0.2;
     public static final double PERSENT_TAX= 0.1;
+
+
+    public Director() {
+    }
+
+    public Director(String firstName, String secondName, String idNumber, double salary) {
+        super(firstName, secondName, idNumber, salary);
+    }
 
     public void changeLocationOfServiceCenter() {
         logger.info("changeLocationOfServiceCenter");
@@ -26,6 +35,9 @@ public class Director extends Employee implements Payment{
         }
         scanner.close();
         switch (position) {
+            case DIRECTOR:
+                listOfEmployees.add(new Director(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
+                break;
             case ADMINISTRATOR:
                 listOfEmployees.add(new Administrator(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
                 break;
