@@ -10,9 +10,9 @@ public class Administrator extends Employee {
 
     private Logger logger = Logger.getLogger(Administrator.class);
 
-    public List<Double> moneyForFixing = new ArrayList();
+    public List<Double> earnedMoney = new ArrayList();
     public HashMap<String, String> clientIdEquipmentId = new HashMap();
-    public HashMap<String, Client> clientIdClientInstanse = new HashMap();
+    public HashMap<String, Client> clientIdClientInstance = new HashMap();
     public int amountFixedEquipment;
     private HashSet<String> listOfClients = new HashSet<String>();
 
@@ -22,46 +22,59 @@ public class Administrator extends Employee {
     public Administrator(String firstName, String secondName, String idNumber, double salary) {
         super(firstName, secondName, idNumber, salary);
     }
-
-
     Serviceman firstServiceman = new Serviceman("s1", "s1", "1", 1000);
     Serviceman secondServiceman = new Serviceman("s2", "s2", "2", 1200);
 
 
-    public void giveEquipmetn(Equipment equipment, Client client) {
-        client.getEquipmetn(equipment.equipmentId, client.idNumber);
+    public void giveEquipment(Equipment equipment) {
+        Client currentClient = getClient(equipment);
+        currentClient.getEquipment(equipment.equipmentId);
         logger.info("Administrator give equipment for client");
     }
 
-    public void giveEquipment(Equipment equipment, Administrator administrator) {
+    private Client getClient(Equipment equipment) {
+        Client cl = clientIdClientInstance.get(clientIdEquipmentId.get(equipment.equipmentId));
+        return cl;
+    }
+
+    public void giveEquipment(Equipment equipment, Employee administrator) {
         firstServiceman.fixProblemWithEquipment(equipment, administrator);
     }
 
     public void getEquipmentForFixing(Equipment equipment, Employee administrator, Client client) {
-        addNewClient(client.secondName);
-        clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
-        clientIdClientInstanse.put(client.idNumber, client);
-        infoAboutFixedEquipmentForReport(equipment);
-        giveEquipment(equipment, (Administrator) administrator);
+        addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment,client);
+        addInfoAboutFixedEquipmentForReport(equipment);
+        giveEquipment(equipment,  administrator);
         logger.info("Administrator get equipment,calculate amount of money and move to service department");
 
     }
 
-    private void addNewClient(String clientSecondName) {
-        listOfClients.add(clientSecondName);
+    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment,Client client) {
+        listOfClients.add(client.secondName);
+        clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
+        clientIdClientInstance.put(client.idNumber, client);
+    }
+
+    private int addInfoAboutFixedEquipmentForReport(Equipment equipment) {
+        amountFixedEquipment++;
+        earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
+        return amountFixedEquipment;
+    }
+
+    public double getSummOfEarnedMoney() {
+        double sum = 0;
+        for (Double d : earnedMoney)
+            sum += d;
+        return sum;
+
     }
 
     public void getListOfClients() {
         System.out.println(listOfClients);
-    }
-
-    private void infoAboutFixedEquipmentForReport(Equipment equipment) {
-        amountFixedEquipment++;
-        moneyForFixing.add(equipment.getEquipmentPrice() * 0.1);
 
     }
 
-    public void  getReport() {
+    public void getReport() {
         logger.info("amount of Fixed Equipment " + amountFixedEquipment);
     }
 
