@@ -7,10 +7,11 @@ public class ClientActions {
 
     public String giveEquipment(Equipment equipment , Employee administrator, Client client) {
         logger.info("Client give equipment to administrator");
-        return  administrator.getEquipmentForFixing(equipment,administrator,client);
+        return  new AdministratorActions().getEquipmentForFixing(equipment,administrator,client);
     }
 
-    public void getEquipment(String equipmentId) {
+    public String getEquipment(String equipmentId) {
         logger.info("Client get fixed equipment");
+        return equipmentId;
     }
 }

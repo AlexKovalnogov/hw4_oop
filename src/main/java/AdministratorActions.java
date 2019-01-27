@@ -1,13 +1,11 @@
 import org.apache.log4j.Logger;
 
-import java.util.List;
-
 public class AdministratorActions implements iActionsWithEquipment {
 
     Logger logger = Logger.getLogger(AdministratorActions.class);
 
 
-    private Serviceman getServicemanfromList() {
+    private Serviceman getServicemanFromList() {
         Serviceman s = new Serviceman();
         for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
             if (Employee.listOfEmployees.get(i) instanceof Serviceman) {
@@ -18,26 +16,47 @@ public class AdministratorActions implements iActionsWithEquipment {
         return s;
     }
 
-    public void giveEquipment(Equipment equipment, Employee administrator) {
-        getServicemanfromList().fixProblemWithEquipment(equipment, administrator);
+    public String giveEquipment(Equipment equipment, Employee administrator) {
+        getServicemanFromList().fixProblemWithEquipment(equipment, administrator);
+        logger.info("Administrator give equipment to serviceman");
+        return getServicemanFromList().idNumber;
     }
 
-
-
-    }
+}
 
     public String getEquipmentForFixing(Equipment equipment, Employee administrator, Client client) {
+        addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
+        addInfoAboutFixedEquipmentForReport(equipment);
         logger.info("Administrator get equipment,calculate amount of money and move to service department");
+        giveEquipment(equipment, administrator);
         return equipment.equipmentId;
     }
-    public void giveEquipment(Equipment equipment) {
+
+
+    public String giveEquipment(Equipment equipment) {
         Client currentClient = getClient(equipment);
-        currentClient.getEquipment(equipment.equipmentId);
-        logger.info("Administrator give equipment for client");
+        new ClientActions().getEquipment(equipment.equipmentId);
+        logger.info("Administrator give equipment for client"+equipment.equipmentId+currentClient.firstName);
+        return equipment.equipmentId+currentClient.firstName;
     }
 
 
+    private Client getClient(Equipment equipment) {
+        return Administrator.clientIdClientInstance.get(Administrator.clientIdEquipmentId.get(equipment.equipmentId));
+    }
 
+
+    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment, Client client) {
+        Administrator.listOfClients.add(client.secondName);
+        Administrator.clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
+        Administrator.clientIdClientInstance.put(client.idNumber, client);
+    }
+
+    private int addInfoAboutFixedEquipmentForReport(Equipment equipment) {
+        Administrator.amountFixedEquipment++;
+        Administrator.earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
+        return Administrator.amountFixedEquipment;
+    }
 
 
 /*

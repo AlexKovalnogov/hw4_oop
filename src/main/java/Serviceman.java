@@ -20,7 +20,7 @@ return administrator.idNumber;
     }
 
     public String giveEquipment(Equipment equipment, Employee administrator) {
-     administrator.giveEquipment( equipment);
+        new AdministratorActions().giveEquipment(equipment);
         logger.info("Serviceman gives equipment to administrator");
         return administrator.idNumber;
     }

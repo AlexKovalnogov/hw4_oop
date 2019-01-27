@@ -9,21 +9,21 @@ import java.util.List;
 public class Administrator extends Employee {
 
 
-    public List<Double> earnedMoney;
-    public HashMap<String, String> clientIdEquipmentId;
-    public HashMap<String, Client> clientIdClientInstance ;
-    public int amountFixedEquipment;
-    private HashSet<String> listOfClients ;
+    public static List<Double> earnedMoney;
+    public static HashMap<String, String> clientIdEquipmentId;
+    public static HashMap<String, Client> clientIdClientInstance;
+    public static int amountFixedEquipment;
+    public static HashSet<String> listOfClients;
 
     public Administrator() {
     }
 
     public Administrator(String firstName, String secondName, String idNumber, double salary) {
         super(firstName, secondName, idNumber, salary);
-        earnedMoney = new ArrayList();
+     /*   earnedMoney = new ArrayList();
         clientIdEquipmentId = new HashMap();
         clientIdClientInstance = new HashMap();
-        listOfClients = new HashSet<String>();
+        listOfClients = new HashSet<String>();*/
     }
 
 

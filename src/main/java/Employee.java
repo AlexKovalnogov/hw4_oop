@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee// implements iActionsWithEquipment
+public class Employee//  implements iActionsWithEquipment
 {
 
     public String firstName;
