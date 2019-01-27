@@ -1,6 +1,6 @@
 import java.util.List;
 
-public interface Payment {
+public interface iPayment {
     void payTax();
     void paySalary();
 }

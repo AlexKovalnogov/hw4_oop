@@ -6,7 +6,6 @@ public class Client{
     public String secondName;
     public String idNumber;
 
-Logger logger= Logger.getLogger(Client.class);
 
 
     public Client(String firstName, String secondName, String idNumber) {
@@ -14,14 +13,4 @@ Logger logger= Logger.getLogger(Client.class);
         this.secondName = secondName;
         this.idNumber = idNumber;
     }
-
-    public void giveEquipment(Equipment equipment , Employee administrator, Client client) {
-     administrator.getEquipmentForFixing(equipment,administrator,client);
-        logger.info("Client give equipment to administrator");
-    }
-
-    public void getEquipment(String equipmentId) {
-        logger.info("Client get fixed equipment");
-    }
-
 }

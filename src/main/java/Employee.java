@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee implements ActionsWithEquipment{
+public class Employee// implements iActionsWithEquipment
+{
 
     public String firstName;
     public String secondName;
     public String idNumber;
-    public double salary;
-    public List<Employee> listOfEmployees = new ArrayList();
+    public  double salary;
+    public static List<Employee> listOfEmployees = new ArrayList();
+
 
     public Employee() {
 
@@ -19,17 +21,9 @@ public class Employee implements ActionsWithEquipment{
         this.idNumber = idNumber;
         this.salary = salary;
     }
-
-    public void getEquipmentForFixing(Equipment equipment, Employee employee,Client client){
-
+  public String getEquipmentForFixing(Equipment equipment, Employee employee,Client client){
+        return "1";
     }
 
-    public void giveEquipment(Equipment equipment) {
-        System.out.print("giveEquipment");
-    }
-
-    public void getEquipmetn(Equipment equipment) {
-        System.out.print("giveEquipment");
-    }
 }
 

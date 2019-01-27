@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 //package  Administrator.class;
 
-public class Director extends Employee implements Payment {
+public class Director extends Employee implements iPayment {
     private Logger logger = Logger.getLogger(Director.class);
 
 

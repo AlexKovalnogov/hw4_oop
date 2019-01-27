@@ -5,20 +5,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+new GoToService().setData();
+new AdministratorActions().f();
 
-        Administrator administrator1 = new Administrator("A1", "A1", "1", 500);
-        Employee administrator2 = new Administrator("A2", "A2", "2", 600);
-        Serviceman firstServiceman = new Serviceman("s1", "s1", "3", 1000);
-        Serviceman secondServiceman = new Serviceman("s2", "s2", "4", 1200);
-        Director director  = new Director("D1", "D1", "5", 2000);
-        Employee employee = new Employee();
-        employee.listOfEmployees.add(administrator1);
-        employee.listOfEmployees.add(administrator2);
-        employee.listOfEmployees.add(firstServiceman);
-        employee.listOfEmployees.add(secondServiceman);
-        employee.listOfEmployees.add(director);
-
-        Client client1 = new Client("CL1", "CL1", "CL1");
+   /*     Client client1 = new Client("CL1", "CL1", "CL1");
         Client client2 = new Client("CL2", "CL2", "CL2");
 
 
@@ -36,7 +26,7 @@ director.getListOfEmployees();
 administrator1.getListOfClients();
 
 
-
+*/
 
 
 /*

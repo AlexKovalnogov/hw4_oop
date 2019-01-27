@@ -11,17 +11,18 @@ public class Serviceman extends Employee {
         super(firstName, secondName, idNumber, salary);
     }
 
-    public void fixProblemWithEquipment(Equipment equipment, Employee administrator) {
+    public String fixProblemWithEquipment(Equipment equipment, Employee administrator) {
         if (isFixed()) {
             giveEquipment(equipment, administrator);
         }
         logger.info("Problem with equipment was fixed");
-
+return administrator.idNumber;
     }
 
-    public void giveEquipment(Equipment equipment, Employee administrator) {
+    public String giveEquipment(Equipment equipment, Employee administrator) {
      administrator.giveEquipment( equipment);
         logger.info("Serviceman gives equipment to administrator");
+        return administrator.idNumber;
     }
 
     private boolean isFixed() {
