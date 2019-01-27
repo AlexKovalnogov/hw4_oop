@@ -13,7 +13,7 @@ public class Main {
         Equipment coffeMachine = new Equipment("1", 25.5, "good", "23/06/2018");
 
 
-        new ClientActions().giveEquipment(coffeMachine,)
+        new ClientActions().giveEquipment(coffeMachine,client1);
    /*
 
 

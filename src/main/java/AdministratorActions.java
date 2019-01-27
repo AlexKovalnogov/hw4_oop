@@ -16,28 +16,28 @@ public class AdministratorActions implements iActionsWithEquipment {
         return s;
     }
 
-    public String giveEquipment(Equipment equipment, Employee administrator) {
-        getServicemanFromList().fixProblemWithEquipment(equipment, administrator);
+    public String giveEquipment(Equipment equipment) {
+        getServicemanFromList().fixProblemWithEquipment(equipment);
         logger.info("Administrator give equipment to serviceman");
         return getServicemanFromList().idNumber;
     }
 
-}
 
-    public String getEquipmentForFixing(Equipment equipment, Employee administrator, Client client) {
-        addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
+
+    public String getEquipmentForFixing(Equipment equipment, Client client) {
+       addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
         addInfoAboutFixedEquipmentForReport(equipment);
         logger.info("Administrator get equipment,calculate amount of money and move to service department");
-        giveEquipment(equipment, administrator);
+        giveEquipment(equipment);
         return equipment.equipmentId;
     }
 
 
-    public String giveEquipment(Equipment equipment) {
-        Client currentClient = getClient(equipment);
+    public String giveEquipmentToClient(Equipment equipment) {
+     Client client = getClient(equipment);
         new ClientActions().getEquipment(equipment.equipmentId);
-        logger.info("Administrator give equipment for client"+equipment.equipmentId+currentClient.firstName);
-        return equipment.equipmentId+currentClient.firstName;
+        logger.info("Administrator give equipment for client"+equipment.equipmentId+client.firstName);
+        return equipment.equipmentId+client.firstName;
     }
 
 

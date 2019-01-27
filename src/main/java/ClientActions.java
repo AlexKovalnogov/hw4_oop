@@ -5,9 +5,9 @@ public class ClientActions {
     Logger logger= Logger.getLogger(ClientActions.class);
 
 
-    public String giveEquipment(Equipment equipment , Employee administrator, Client client) {
+    public String giveEquipment(Equipment equipment , Client client) {
         logger.info("Client give equipment to administrator");
-        return  new AdministratorActions().getEquipmentForFixing(equipment,administrator,client);
+        return  new AdministratorActions().getEquipmentForFixing(equipment,client);
     }
 
     public String getEquipment(String equipmentId) {

@@ -20,10 +20,10 @@ public class Administrator extends Employee {
 
     public Administrator(String firstName, String secondName, String idNumber, double salary) {
         super(firstName, secondName, idNumber, salary);
-     /*   earnedMoney = new ArrayList();
+      earnedMoney = new ArrayList();
         clientIdEquipmentId = new HashMap();
         clientIdClientInstance = new HashMap();
-        listOfClients = new HashSet<String>();*/
+        listOfClients = new HashSet<String>();
     }
 
 

@@ -1,4 +1,4 @@
 public interface iActionsWithEquipment {
-    String getEquipmentForFixing(Equipment equipment, Employee employee,Client client);
+    String getEquipmentForFixing(Equipment equipment,Client client);
 
 }
