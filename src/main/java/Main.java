@@ -13,7 +13,7 @@ public class Main {
         Equipment coffeMachine = new Equipment("1", 25.5, "good", "23/06/2018");
 
 
-        new ClientActions().giveEquipment(coffeMachine,client1);
+     //   new ClientActions().giveEquipment(coffeMachine,client1);
    /*
 
 
@@ -31,7 +31,6 @@ administrator1.getListOfClients();
 */
 
 
-/*
         System.out.println("Input  position: 1)Director 2)Administrator 3)Serviceman 4) Client  0)Exit");
 
         int position;
@@ -41,7 +40,7 @@ administrator1.getListOfClients();
         //1  while (exit)
         switch (position) {
             case 0: {
-                exit = false;
+                System.exit(0);
                 break;
             }
 
@@ -60,11 +59,10 @@ administrator1.getListOfClients();
             }
 
             case 4: {
-
-
+ClientActions.clientSubMenu();
                 break;
             }
-        }*/
+        }
 
     }
 }

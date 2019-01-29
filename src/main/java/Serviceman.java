@@ -1,7 +1,5 @@
-import org.apache.log4j.Logger;
 
 public class Serviceman extends Employee {
-
 
 
     public Serviceman() {
@@ -10,7 +8,4 @@ public class Serviceman extends Employee {
     public Serviceman(String firstName, String secondName, String idNumber, double salary) {
         super(firstName, secondName, idNumber, salary);
     }
-
-
-
 }
