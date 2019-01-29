@@ -1,8 +1,8 @@
 import EmployeeActions.*;
 import Equipment.Equipment;
+import InstanceModels.Administrator;
 import InstanceModels.Client;
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 public class Menu {
@@ -62,7 +62,41 @@ public class Menu {
     }
 
     public void drawAdministratorMenu() {
+        AdministratorActions administratorActions = new AdministratorActions();
+        System.out.print("1) Посмотреть всех клиентов" + "\n" +
+                "2) взять на ремонт технику(цена ремонта = 10% от суммы товара)" + "\n" +
+                "3) показать отчет(количество отремонтированной техники за неделю)" + "\n" +
+                "4)  отдать отремонтированный товар клиенту" + "\n" +
+                "5)передать технику специалисту по ремонту" + "\n" +
+                "0) Назад" + "\n");
+        Scanner scanner = new Scanner(System.in);
+        switch (scanner.nextInt()) {
+            case 0: {
+                drawMainMenu();
+                break;
+            }
+            case 1: {
+                administratorActions.getListOfClients();
+                break;
+            }
+            case 2: {
+                administratorActions.getEquipmentForFixing(null, null);
+                break;
+            }
 
+            case 3: {
+                administratorActions.getReportAboutFixedEquipment(Administrator.amountFixedEquipment);
+                break;
+            }
+            case 4: {
+                administratorActions.giveEquipmentToClient(null);
+                break;
+            }
+            case 5: {
+                administratorActions.giveEquipment(null, null);
+                break;
+            }
+        }
     }
 
     public void drawDirectorMenu() {
