@@ -15,31 +15,51 @@ public class AdministratorActions implements iActionsWithEquipment {
         }
         return s;
     }
+/*
+   private Employee getEmployeeFormList(Employee employee ){
 
-    public String giveEquipment(Equipment equipment) {
-        getServicemanFromList().fixProblemWithEquipment(equipment);
-        logger.info("Administrator give equipment to serviceman");
-        return getServicemanFromList().idNumber;
+       Employee e = new Employee();
+       for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
+           if (Employee.listOfEmployees.get(i) instanceof Employee) {
+               e = (Serviceman) Employee.listOfEmployees.get(i);
+               break;
+           }
+       }
+       return s;
+   }*/
+
+    private Administrator getAdministratorFromList() {
+        Administrator administrator = new Administrator();
+        for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
+            if (Employee.listOfEmployees.get(i) instanceof Administrator) {
+                administrator = (Administrator) Employee.listOfEmployees.get(i);
+                break;
+            }
+        }
+        return administrator;
     }
-
-
 
     public String getEquipmentForFixing(Equipment equipment, Client client) {
        addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
         addInfoAboutFixedEquipmentForReport(equipment);
+       Administrator administrator= getAdministratorFromList();
         logger.info("Administrator get equipment,calculate amount of money and move to service department");
-        giveEquipment(equipment);
+        giveEquipment(equipment,administrator);
         return equipment.equipmentId;
     }
 
+    public String giveEquipment(Equipment equipment,Administrator administrator) {
+        getServicemanFromList().fixProblemWithEquipment(equipment,administrator);
+        logger.info("Administrator give equipment to serviceman");
+        return getServicemanFromList().idNumber;
+    }
 
     public String giveEquipmentToClient(Equipment equipment) {
      Client client = getClient(equipment);
-        new ClientActions().getEquipment(equipment.equipmentId);
-        logger.info("Administrator give equipment for client"+equipment.equipmentId+client.firstName);
+       new ClientActions().getEquipment(equipment.equipmentId);
+        logger.info("Administrator give equipment for client   "+equipment.equipmentId+" "+client.firstName);
         return equipment.equipmentId+client.firstName;
     }
-
 
     private Client getClient(Equipment equipment) {
         return Administrator.clientIdClientInstance.get(Administrator.clientIdEquipmentId.get(equipment.equipmentId));

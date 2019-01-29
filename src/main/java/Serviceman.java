@@ -11,13 +11,13 @@ public class Serviceman extends Employee {
         super(firstName, secondName, idNumber, salary);
     }
 
-    public String fixProblemWithEquipment(Equipment equipment) {
+    public String fixProblemWithEquipment(Equipment equipment, Administrator a) {
         if (isFixed()) {
 
             giveEquipment(equipment);
         }
         logger.info("Problem with equipment was fixed");
-return equipment.equipmentId;//administrator.idNumber;
+        return equipment.equipmentId;//administrator.idNumber;
     }
 
     public String giveEquipment(Equipment equipment) {
