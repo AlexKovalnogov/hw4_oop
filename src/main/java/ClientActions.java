@@ -6,12 +6,12 @@ public class ClientActions {
 
 
     public String giveEquipment(Equipment equipment , Client client) {
-        logger.info("Client give equipment to administrator");
+        logger.info("Client gives equipment to administrator");
         return  new AdministratorActions().getEquipmentForFixing(equipment,client);
     }
 
     public String getEquipment(String equipmentId) {
-        logger.info("Client get fixed equipment111");
+        logger.info("Client gets fixed equipment111");
         return equipmentId;
     }
 }
