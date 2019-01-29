@@ -1,6 +1,7 @@
-import java.util.List;
+package Interfaces;
+
 
 public interface iPayment {
-    void payTax();
+    double payTax();
     void paySalary();
 }

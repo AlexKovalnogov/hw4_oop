@@ -1,24 +1,22 @@
-import org.apache.log4j.Logger;
+package EmployeeActions;
 
+import InstanceModels.*;
+import Interfaces.iPayment;
+import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-//package  Administrator.class;
-
-public class Director extends Employee implements iPayment {
-    private Logger logger = Logger.getLogger(Director.class);
-
-
-    public static final double PERSENT_INCREASING_SALARY = 0.2;
-    public static final double PERSENT_TAX = 0.1;
+import static EmployeeActions.StaffPositionInServiceCentre.*;
+import static InstanceModels.Director.PERSENT_INCREASING_SALARY;
+import static InstanceModels.Director.PERSENT_TAX;
+import static InstanceModels.Employee.listOfEmployees;
 
 
-    public Director() {
-    }
 
-    public Director(String firstName, String secondName, String idNumber, double salary) {
-        super(firstName, secondName, idNumber, salary);
-    }
+public class DirectorActions implements iPayment {
+
+    private Logger logger = Logger.getLogger(DirectorActions.class);
+
 
     public void changeLocationOfServiceCenter() {
         logger.info("changeLocationOfServiceCenter");
@@ -26,7 +24,7 @@ public class Director extends Employee implements iPayment {
 
     public void hireEmployee(StaffPositionInServiceCentre position) {
         String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: "};
-        List<String> variablesForEmployee = new ArrayList();
+        List <String> variablesForEmployee = new ArrayList<String>();
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < arrayOfLabels.length; i++) {
             System.out.println(arrayOfLabels[i]);
@@ -45,16 +43,18 @@ public class Director extends Employee implements iPayment {
                 listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
                 break;
         }
-        logger.info("Employee is hired");
+        logger.info("InstanceModels.Employee is hired");
     }
 
     public void fireEmployee(int indexOfEmployeeInList) {
         listOfEmployees.remove(indexOfEmployeeInList);
-        logger.info("Employee" + indexOfEmployeeInList + " is fired");
+        logger.info("InstanceModels.Employee" + indexOfEmployeeInList + " is fired");
     }
 
-    public void payTax() {
-        System.out.print("payTax");
+    public double payTax() {
+        double sumOfEarnedMoney=  new AdministratorActions().getSummOfEarnedMoney();
+        System.out.print("payTax "+sumOfEarnedMoney*PERSENT_TAX);
+        return sumOfEarnedMoney*PERSENT_TAX;
     }
 
     public void paySalary() {
@@ -83,3 +83,5 @@ public class Director extends Employee implements iPayment {
 
 
 }
+
+

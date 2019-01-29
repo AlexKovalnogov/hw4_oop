@@ -1,4 +1,7 @@
-import org.apache.log4j.Logger;
+package InstanceModels;
+
+import InstanceModels.Client;
+import InstanceModels.Employee;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,9 +23,9 @@ public class Administrator extends Employee {
 
     public Administrator(String firstName, String secondName, String idNumber, double salary) {
         super(firstName, secondName, idNumber, salary);
-      earnedMoney = new ArrayList();
-        clientIdEquipmentId = new HashMap();
-        clientIdClientInstance = new HashMap();
+      earnedMoney = new ArrayList<Double>();
+        clientIdEquipmentId = new HashMap<String, String>();
+        clientIdClientInstance = new HashMap<String, Client>();
         listOfClients = new HashSet<String>();
     }
 

@@ -1,7 +1,9 @@
+package InstanceModels;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee//  implements iActionsWithEquipment
+public class Employee//  implements Interfaces.iActionsWithEquipment
 {
 
     public String firstName;
@@ -21,9 +23,9 @@ public class Employee//  implements iActionsWithEquipment
         this.idNumber = idNumber;
         this.salary = salary;
     }
-  public String getEquipmentForFixing(Equipment equipment, Employee employee,Client client){
+/* // public String getEquipmentForFixing(Equipment.Equipment equipment, Employee employee, Client client){
         return "1";
-    }
+    }*/
 
 }
 

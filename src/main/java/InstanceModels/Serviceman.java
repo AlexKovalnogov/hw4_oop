@@ -1,3 +1,6 @@
+package InstanceModels;
+
+import InstanceModels.Employee;
 
 public class Serviceman extends Employee {
 

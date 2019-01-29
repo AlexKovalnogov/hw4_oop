@@ -1,3 +1,4 @@
+import InstanceModels.*;
 
 public class GoToService {
 

@@ -1,3 +1,7 @@
+package EmployeeActions;
+
+import Equipment.Equipment;
+import InstanceModels.Administrator;
 import org.apache.log4j.Logger;
 
 public class ServicemanActions {
@@ -13,7 +17,7 @@ public class ServicemanActions {
     }
 
     public String giveEquipment(Equipment equipment, String administratorId) {
-        logger.info("Serviceman gives equipment to administrator");
+        logger.info("InstanceModels.Serviceman gives equipment to administrator");
         new AdministratorActions().giveEquipmentToClient(equipment);
         // return equipment.equipmentId; //administrator.idNumber;
         return administratorId;

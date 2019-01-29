@@ -1,6 +1,10 @@
-import org.apache.log4j.Logger;
+package EmployeeActions;
 
+import Equipment.Equipment;
+import InstanceModels.Client;
+import org.apache.log4j.Logger;
 import java.util.Scanner;
+
 
 public class ClientActions {
 
@@ -8,17 +12,16 @@ public class ClientActions {
 
 
     public String giveEquipment(Equipment equipment , Client client) {
-        logger.info("Client gives equipment to administrator");
+        logger.info("InstanceModels.Client gives equipment to administrator");
         return  new AdministratorActions().getEquipmentForFixing(equipment,client);
     }
 
     public String getEquipment(String equipmentId) {
-        logger.info("Client gets fixed equipment111");
+        logger.info("InstanceModels.Client gets fixed equipment");
         return equipmentId;
     }
 
-
-    public static void clientSubMenu(){
+  /*  public static void clientSubMenu(){
         Scanner scannerCl = new Scanner(System.in);
       System.out.println("adda");
         System.out.println("adda");
@@ -29,7 +32,7 @@ public class ClientActions {
             case 1:{
                 System.out.println("1");
 
-              //  new ClientActions().giveEquipment(); break;
+              //  new EmployeeActions.ClientActions().giveEquipment(); break;
             }
 
             case 2: System.out.println("2"); break;
@@ -38,5 +41,5 @@ public class ClientActions {
 
         }
 
-    }
+    }*/
 }
