@@ -1,5 +1,4 @@
-import EmployeeActions.ClientActions;
-import EmployeeActions.DirectorActions;
+import EmployeeActions.*;
 import Equipment.Equipment;
 import InstanceModels.*;
 import java.util.Scanner;
@@ -13,10 +12,10 @@ public class Main {
 
         Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
         Equipment coffeMachine1 = new Equipment("2", 1000, "good1", "23/07/2018");
-
-      new ClientActions().giveEquipment(coffeMachine,client1);
-        new ClientActions().giveEquipment(coffeMachine,client2);
-new DirectorActions().payTax();
+new  Menu().drawMainMenu();
+  //    new ClientActions().giveEquipment(coffeMachine,client1);
+   //     new ClientActions().giveEquipment(coffeMachine1,client2);
+//new DirectorActions().payTax();
 
    /*
 String pattern = "yyyy-MM-dd";
@@ -39,38 +38,6 @@ administrator1.getListOfClients();
 */
 
 
-      /*  System.out.println("Input  position: 1)InstanceModels.Director 2)InstanceModels.Administrator 3)InstanceModels.Serviceman 4) InstanceModels.Client  0)Exit");
-
-        int position;
-        Scanner scanner = new Scanner(System.in);
-        position = scanner.nextInt();
-        boolean exit = true;
-        //1  while (exit)
-        switch (position) {
-            case 0: {
-                System.exit(0);
-                break;
-            }
-
-            case 1: {
-
-
-            }
-            break;
-
-            case 2: {
-                break;
-            }
-
-            case 3: {
-                break;
-            }
-
-            case 4: {
-ClientActions.clientSubMenu();
-                break;
-            }
-        }*/
 
     }
 }

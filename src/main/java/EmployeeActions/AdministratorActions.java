@@ -5,6 +5,9 @@ import InstanceModels.*;
 import Interfaces.iActionsWithEquipment;
 import org.apache.log4j.Logger;
 
+import java.util.HashSet;
+import java.util.List;
+
 import static InstanceModels.Administrator.amountFixedEquipment;
 import static InstanceModels.Administrator.earnedMoney;
 
@@ -46,11 +49,9 @@ public class AdministratorActions implements iActionsWithEquipment {
     }
 
     public String giveEquipment(Equipment equipment, Administrator administrator) {
-        // getServicemanFromList().fixProblemWithEquipment(equipment,administrator);
         logger.info("InstanceModels.Administrator gives equipment to serviceman");
         new ServicemanActions().fixProblemWithEquipment(equipment, administrator);
         return getServicemanFromList().idNumber;
-
     }
 
     public String giveEquipmentToClient(Equipment equipment) {
@@ -84,9 +85,15 @@ public class AdministratorActions implements iActionsWithEquipment {
         return sum;
     }
 
-    public int getReportAboutFixedEquipment( int amountFixedEquipment) {
-        logger.info("amount of Fixed Equipment.Equipment "+ amountFixedEquipment);
+    public int getReportAboutFixedEquipment(int amountFixedEquipment) {
+        logger.info("amount of Fixed Equipment.Equipment = " + amountFixedEquipment);
         return amountFixedEquipment;
+    }
+
+    public HashSet<String> getListOfClients() {
+        logger.info("List of clients is present");
+        return Administrator.listOfClients;
+
     }
 /*
     InstanceModels.Serviceman firstServiceman = new InstanceModels.Serviceman("s1", "s1", "1", 1000);

@@ -17,8 +17,6 @@ public class GoToService {
         employee.listOfEmployees.add(firstServiceman);
        // employee.listOfEmployees.add(secondServiceman);
         employee.listOfEmployees.add(director);
-
-
     }
 
 
