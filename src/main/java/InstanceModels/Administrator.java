@@ -3,20 +3,18 @@ package InstanceModels;
 import InstanceModels.Client;
 import InstanceModels.Employee;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 
 public class Administrator extends Employee {
 
 
     public static List<Double> earnedMoney;
-    public static HashMap<String, String> clientIdEquipmentId;
-    public static HashMap<String, Client> clientIdClientInstance;
+    public static Map<String, String> clientIdEquipmentId;
+    public static Map<String, Client> clientIdClientInstance;
     public static int amountFixedEquipment;
-    public static HashSet<String> listOfClients;
+    public static Set<String> listOfClients;
+    public static Map<Date, Double> earnedMoneyEachDay;
 
     public Administrator() {
     }
@@ -27,6 +25,7 @@ public class Administrator extends Employee {
         clientIdEquipmentId = new HashMap<String, String>();
         clientIdClientInstance = new HashMap<String, Client>();
         listOfClients = new HashSet<String>();
+        earnedMoneyEachDay=new HashMap<Date,Double>();
     }
 
 

@@ -4,7 +4,11 @@ import Equipment.Equipment;
 import InstanceModels.*;
 import Interfaces.iActionsWithEquipment;
 import org.apache.log4j.Logger;
-import java.util.HashSet;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Set;
 
 import static InstanceModels.Administrator.amountFixedEquipment;
 import static InstanceModels.Administrator.earnedMoney;
@@ -35,7 +39,7 @@ public class AdministratorActions implements iActionsWithEquipment {
         return administrator;
     }
 
-    public String getEquipmentForFixing(Equipment equipment, Client client) throws NullPointerException {
+    public String getEquipmentForFixing(Equipment equipment, Client client) throws Exception {
         addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
         addInfoAboutFixedEquipmentForReport(equipment);
         Administrator administrator = getAdministratorFromList();
@@ -62,15 +66,17 @@ public class AdministratorActions implements iActionsWithEquipment {
     }
 
 
-    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment, Client client) throws NullPointerException {
+    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment, Client client)  {
         Administrator.listOfClients.add(client.secondName);
         Administrator.clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
         Administrator.clientIdClientInstance.put(client.idNumber, client);
     }
 
-    private int addInfoAboutFixedEquipmentForReport(Equipment equipment) throws NullPointerException {
+    private int addInfoAboutFixedEquipmentForReport(Equipment equipment) throws Exception {
         amountFixedEquipment++;
         earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
+        Date date=convertStringDateIntoDate(equipment.getEquipmentDateOfBuying());
+        Administrator.earnedMoneyEachDay.put(date,equipment.getEquipmentPrice() * 0.1);
         return amountFixedEquipment;
     }
 
@@ -86,10 +92,13 @@ public class AdministratorActions implements iActionsWithEquipment {
         return amountFixedEquipment;
     }
 
-    public HashSet<String> getListOfClients() {
+    public Set<String> getListOfClients() {
         logger.info("List of clients is present");
         return Administrator.listOfClients;
 
     }
+private Date convertStringDateIntoDate(String date)throws  Exception{
+  return new SimpleDateFormat("dd/MM/yyyy").parse(date);
+}
 
 }

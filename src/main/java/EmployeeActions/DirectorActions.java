@@ -3,10 +3,10 @@ package EmployeeActions;
 import InstanceModels.*;
 import Interfaces.iPayment;
 import org.apache.log4j.Logger;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import static EmployeeActions.StaffPositionInServiceCentre.*;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 import static InstanceModels.Director.PERSENT_INCREASING_SALARY;
 import static InstanceModels.Director.PERSENT_TAX;
 import static InstanceModels.Employee.listOfEmployees;
@@ -53,32 +53,38 @@ public class DirectorActions implements iPayment {
 
     public double payTax() {
         double sumOfEarnedMoney=  new AdministratorActions().getSummOfEarnedMoney();
-        System.out.print("payTax "+sumOfEarnedMoney*PERSENT_TAX);
+        logger.info("payTax "+sumOfEarnedMoney*PERSENT_TAX);
         return sumOfEarnedMoney*PERSENT_TAX;
     }
 
     public void paySalary() {
-        System.out.print("paySalary");
+        logger.info("paySalary");
     }
 
     public List<Employee> getListOfEmployees() {
-        System.out.println(listOfEmployees);
+        logger.info("List of Employee is present");
         return listOfEmployees;
     }
 
     public void increaseSalaryForEmployees() {
-
         List<Employee> listOfEmployee = getListOfEmployees();
         for (Employee empl : listOfEmployee) {
             empl.salary = empl.salary * PERSENT_INCREASING_SALARY;
         }
 
-        System.out.println("increaseSalaryForEmployees");
+        logger.info("increaseSalaryForEmployees");
 
     }
-
-    public void getRevenues() {
-        System.out.println("getRevenues");
+    public Double getRevenues(String date ) throws  Exception {
+        Date d=new SimpleDateFormat("dd/MM/yyyy").parse(date);
+     double sum=0;
+      for(Map.Entry<Date,Double> map: Administrator.earnedMoneyEachDay.entrySet()){
+          if (d.compareTo(map.getKey())==0){
+             sum=sum+ map.getValue();
+          }
+      }
+        logger.info("getRevenues for day "+sum);
+        return sum;
     }
 
 
