@@ -18,6 +18,19 @@ new  Menu().drawMainMenu();
    /*
 director.getListOfEmployees();
 administrator1.getListOfClients();
+
+
+String from = "19/05/1991";
+String cmp = "23/05/1991";
+String to = "23/12/2015";
+
+DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+Date date1 = format.parse(from);
+Date date2 = format.parse(cmp);
+Date date3 = format.parse(to);
+
+if(date1.before(date2) && date3.after(date2)) {
+   System.out.println("Date lies between from and to date");
 */
 
 
