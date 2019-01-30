@@ -2,10 +2,14 @@ import EmployeeActions.*;
 import Equipment.Equipment;
 import InstanceModels.Administrator;
 import InstanceModels.Client;
+import org.apache.log4j.Logger;
+
 
 import java.util.Scanner;
 
+
 public class Menu {
+    Logger logger = Logger.getLogger(Menu.class);
 
 
     public void drawMainMenu() {
@@ -17,26 +21,41 @@ public class Menu {
                 break;
             }
             case 1: {
-                drawDirectorMenu();
+                try {
+                    drawDirectorMenu();
+                } catch (Exception e) {
+                    logger.info("Action is unavailable " + e);
+                }
                 break;
             }
             case 2: {
-                drawAdministratorMenu();
+                try {
+                    drawAdministratorMenu();
+                } catch (Exception e) {
+                    logger.info("Action is unavailable " + e);
+                }
                 break;
             }
-
             case 3: {
-                drawServicemanMenu();
+                try {
+                    drawServicemanMenu();
+                } catch (Exception e) {
+                    logger.info("Action is unavailable " + e);
+                }
                 break;
             }
             case 4: {
-                drawClientMenu();
+                try {
+                    drawClientMenu();
+                } catch (Exception e) {
+                    logger.info("Action is unavailable " + e);
+                }
                 break;
             }
         }
     }
 
-    public void drawClientMenu() {
+    private void drawClientMenu() {
         ClientActions clientActions = new ClientActions();
         System.out.print("1)сдать товар на ремонт" + "\n" +
                 "2) забрать товар по идентификационному коду" + "\n" +
@@ -61,7 +80,7 @@ public class Menu {
         }
     }
 
-    public void drawAdministratorMenu() {
+    private void drawAdministratorMenu() {
         AdministratorActions administratorActions = new AdministratorActions();
         System.out.print("1) Посмотреть всех клиентов" + "\n" +
                 "2) взять на ремонт технику(цена ремонта = 10% от суммы товара)" + "\n" +
@@ -99,7 +118,7 @@ public class Menu {
         }
     }
 
-    public void drawDirectorMenu() {
+    private void drawDirectorMenu() {
         DirectorActions directorActions = new DirectorActions();
         System.out.print("1) сменить место расположения сервисного центра" + "\n" +
                 "2) нанять сотрудника" + "\n" +
@@ -157,7 +176,7 @@ public class Menu {
         }
     }
 
-    public void drawServicemanMenu() {
+    private void drawServicemanMenu() {
         ServicemanActions servicemanActions = new ServicemanActions();
         System.out.print("1)ремонтировать" + "\n" +
                 "2) возвращать отремонтированную технику администратору" + "\n" +
