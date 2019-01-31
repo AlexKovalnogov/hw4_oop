@@ -1,4 +1,4 @@
-package InstanceModels;
+package com.qa.models;
 
 public class Serviceman extends Employee {
     public Serviceman() {

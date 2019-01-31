@@ -1,7 +1,7 @@
-package EmployeeActions;
+package com.qa.employeeActions;
 
-import Equipment.Equipment;
-import InstanceModels.Administrator;
+import com.qa.models.Equipment;
+import com.qa.models.Administrator;
 import org.apache.log4j.Logger;
 
 public class ServicemanActions {
@@ -17,7 +17,7 @@ public class ServicemanActions {
     }
 
     public String giveEquipment(Equipment equipment, String administratorId) throws NullPointerException {
-        logger.info("InstanceModels.Serviceman gives equipment to administrator");
+        logger.info("com.qa.models.Serviceman gives equipment to administrator");
         new AdministratorActions().giveEquipmentToClient(equipment);
         // return equipment.equipmentId; //administrator.idNumber;
         return administratorId;

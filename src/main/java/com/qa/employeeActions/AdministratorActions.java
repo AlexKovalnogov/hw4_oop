@@ -1,19 +1,20 @@
-package EmployeeActions;
+package com.qa.employeeActions;
 
-import Equipment.Equipment;
-import InstanceModels.*;
-import Interfaces.iActionsWithEquipment;
+import com.qa.exceptions.ExceptionForAdministratorActions;
+import com.qa.models.Equipment;
+import com.qa.models.*;
+import com.qa.interfaces.IActionsWithEquipment;
 import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
-import static InstanceModels.Administrator.amountFixedEquipment;
-import static InstanceModels.Administrator.earnedMoney;
+import static com.qa.models.Administrator.amountFixedEquipment;
+import static com.qa.models.Administrator.earnedMoney;
 
 
-public class AdministratorActions implements iActionsWithEquipment {
+public class AdministratorActions implements IActionsWithEquipment {
 
     Logger logger = Logger.getLogger(AdministratorActions.class);
 
@@ -43,21 +44,22 @@ public class AdministratorActions implements iActionsWithEquipment {
         addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
         addInfoAboutFixedEquipmentForReport(equipment);
         Administrator administrator = getAdministratorFromList();
-        logger.info("InstanceModels.Administrator gets equipment,calculate amount of money and move to service department");
+        logger.info("com.qa.models.Administrator gets equipment,calculate amount of money and move to service department");
         giveEquipment(equipment, administrator);
         return equipment.equipmentId;
+
     }
 
     public String giveEquipment(Equipment equipment, Administrator administrator) {
-        logger.info("InstanceModels.Administrator gives equipment to serviceman");
+        logger.info("com.qa.models.Administrator gives equipment to serviceman");
         new ServicemanActions().fixProblemWithEquipment(equipment, administrator);
         return getServicemanFromList().idNumber;
     }
 
     public String giveEquipmentToClient(Equipment equipment) throws NullPointerException {
         Client client = getClient(equipment);
-        logger.info("InstanceModels.Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
-        new ClientActions().getEquipment(equipment.equipmentId);
+        logger.info("com.qa.models.Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
+        new ClientActions(client).getEquipment(equipment.equipmentId);
         return equipment.equipmentId + client.firstName;
     }
 
@@ -87,7 +89,7 @@ public class AdministratorActions implements iActionsWithEquipment {
     }
 
     public int getReportAboutFixedEquipment(int amountFixedEquipment) throws NullPointerException {
-        logger.info("amount of Fixed Equipment.Equipment = " + amountFixedEquipment);
+        logger.info("amount of Fixed com.qa.models.Equipment = " + amountFixedEquipment);
         return amountFixedEquipment;
     }
 

@@ -1,22 +1,16 @@
-package EmployeeActions;
-
-import InstanceModels.Administrator;
-import InstanceModels.Director;
-import InstanceModels.Employee;
-import InstanceModels.Serviceman;
-import Interfaces.iPayment;
+package com.qa.employeeActions;
+import com.qa.models.*;
+import com.qa.interfaces.IPayment;
 import org.apache.log4j.Logger;
-
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
-import static InstanceModels.Director.PERSENT_INCREASING_SALARY;
-import static InstanceModels.Director.PERSENT_TAX;
-import static InstanceModels.Employee.listOfEmployees;
+import static com.qa.models.Director.PERSENT_INCREASING_SALARY;
+import static com.qa.models.Director.PERSENT_TAX;
+import static com.qa.models.Employee.listOfEmployees;
 
 
-public class DirectorActions implements iPayment {
+public class DirectorActions implements IPayment {
 
     private Logger logger = Logger.getLogger(DirectorActions.class);
 
@@ -45,12 +39,12 @@ public class DirectorActions implements iPayment {
                 listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
                 break;
         }
-        logger.info("InstanceModels.Employee is hired");
+        logger.info("com.qa.models.Employee is hired");
     }
 
     public void fireEmployee(int indexOfEmployeeInList) {
         listOfEmployees.remove(indexOfEmployeeInList);
-        logger.info("InstanceModels.Employee" + indexOfEmployeeInList + " is fired");
+        logger.info("com.qa.models.Employee" + indexOfEmployeeInList + " is fired");
     }
 
     public double payTax() {

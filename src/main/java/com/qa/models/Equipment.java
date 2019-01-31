@@ -1,4 +1,4 @@
-package Equipment;
+package com.qa.models;
 
 import org.apache.log4j.Logger;
 

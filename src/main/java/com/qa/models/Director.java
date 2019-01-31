@@ -1,5 +1,4 @@
-package InstanceModels;
-import org.apache.log4j.Logger;
+package com.qa.models;
 
 public class Director extends Employee  {
 

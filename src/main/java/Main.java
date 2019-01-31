@@ -1,8 +1,5 @@
-import EmployeeActions.*;
-import Equipment.Equipment;
-import InstanceModels.*;
-
-import java.util.Scanner;
+import com.qa.models.Equipment;
+import com.qa.models.*;
 
 public class Main {
     public static void main(String[] args) {

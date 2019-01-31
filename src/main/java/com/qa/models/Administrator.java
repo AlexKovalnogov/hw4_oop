@@ -1,4 +1,4 @@
-package InstanceModels;
+package com.qa.models;
 
 import java.util.*;
 

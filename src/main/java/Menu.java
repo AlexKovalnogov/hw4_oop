@@ -1,7 +1,7 @@
-import EmployeeActions.*;
-import Equipment.Equipment;
-import InstanceModels.Administrator;
-import InstanceModels.Client;
+import com.qa.employeeActions.*;
+import com.qa.models.Equipment;
+import com.qa.models.Administrator;
+import com.qa.models.Client;
 import org.apache.log4j.Logger;
 import java.util.Scanner;
 
@@ -54,7 +54,8 @@ public class Menu {
     }
 
     private void drawClientMenu()throws Exception  {
-        ClientActions clientActions = new ClientActions();
+        Client client1 = new Client("CL1", "CL1", "CL1");
+        ClientActions clientActions = new ClientActions(client1);
         System.out.print("1)сдать товар на ремонт" + "\n" +
                 "2)забрать товар по идентификационному коду" + "\n" +
                 "0)Назад" + "\n");
@@ -65,10 +66,8 @@ public class Menu {
                 break;
             }
             case 1: {
-
                     Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
-                    Client client1 = new Client("CL1", "CL1", "CL1");
-                    clientActions.giveEquipment(coffeMachine, client1);
+                    clientActions.giveEquipment(coffeMachine);
 
                 break;
             }
@@ -171,7 +170,7 @@ public class Menu {
                 break;
             }
             case 7: {
-                directorActions.getRevenues("23/06/1990") ;
+             //   directorActions.getRevenues("23/06/1990",DAY) ;
                 break;
             }
             case 8: {

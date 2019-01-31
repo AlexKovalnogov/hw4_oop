@@ -1,4 +1,4 @@
-import InstanceModels.*;
+import com.qa.models.*;
 
 public class GoToService {
 
