@@ -58,8 +58,8 @@ public class Menu {
     private void drawClientMenu() {
         ClientActions clientActions = new ClientActions();
         System.out.print("1)сдать товар на ремонт" + "\n" +
-                "2) забрать товар по идентификационному коду" + "\n" +
-                "0) Назад" + "\n");
+                "2)забрать товар по идентификационному коду" + "\n" +
+                "0)Назад" + "\n");
         Scanner scanner = new Scanner(System.in);
         switch (scanner.nextInt()) {
             case 0: {
@@ -67,9 +67,12 @@ public class Menu {
                 break;
             }
             case 1: {
-             /*   Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
-                Client client1 = new Client("CL1", "CL1", "CL1");
-                clientActions.giveEquipment(coffeMachine, client1);*/
+                try {
+                    Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
+                    Client client1 = new Client("CL1", "CL1", "CL1");
+                    clientActions.giveEquipment(coffeMachine, client1);
+                }
+                catch (Exception e){ logger.info("Action is unavailable " + e);}
                 break;
             }
             case 2: {
@@ -83,11 +86,11 @@ public class Menu {
     private void drawAdministratorMenu() {
         AdministratorActions administratorActions = new AdministratorActions();
         System.out.print("1) Посмотреть всех клиентов" + "\n" +
-                "2) взять на ремонт технику(цена ремонта = 10% от суммы товара)" + "\n" +
-                "3) показать отчет(количество отремонтированной техники за неделю)" + "\n" +
-                "4)  отдать отремонтированный товар клиенту" + "\n" +
+                "2)взять на ремонт технику(цена ремонта = 10% от суммы товара)" + "\n" +
+                "3)показать отчет(количество отремонтированной техники за неделю)" + "\n" +
+                "4)отдать отремонтированный товар клиенту" + "\n" +
                 "5)передать технику специалисту по ремонту" + "\n" +
-                "0) Назад" + "\n");
+                "0)Назад" + "\n");
         Scanner scanner = new Scanner(System.in);
         switch (scanner.nextInt()) {
             case 0: {
