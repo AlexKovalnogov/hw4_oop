@@ -1,8 +1,5 @@
 package InstanceModels;
 
-import InstanceModels.Client;
-import InstanceModels.Employee;
-
 import java.util.*;
 
 
@@ -14,7 +11,7 @@ public class Administrator extends Employee {
     public static Map<String, Client> clientIdClientInstance;
     public static int amountFixedEquipment;
     public static Set<String> listOfClients;
-    public static List<Date> earnedMoneyEachDay;
+    public static List<Date> datesOfGettingRevenues;
 
     public Administrator() {
     }
@@ -25,6 +22,6 @@ public class Administrator extends Employee {
         clientIdEquipmentId = new HashMap<String, String>();
         clientIdClientInstance = new HashMap<String, Client>();
         listOfClients = new HashSet<String>();
-        earnedMoneyEachDay = new ArrayList<Date>();
+        datesOfGettingRevenues = new ArrayList<Date>();
     }
 }

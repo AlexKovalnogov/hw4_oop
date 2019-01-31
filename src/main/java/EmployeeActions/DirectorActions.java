@@ -78,8 +78,8 @@ public class DirectorActions implements iPayment {
     public Double getRevenues(String date) throws Exception {
         Date d = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         double sum = 0;
-        for (int i = 0; i < Administrator.earnedMoneyEachDay.size() - 1; i++) {
-            if (d.compareTo(Administrator.earnedMoneyEachDay.get(i)) == 0) {
+        for (int i = 0; i < Administrator.datesOfGettingRevenues.size() - 1; i++) {
+            if (d.compareTo(Administrator.datesOfGettingRevenues.get(i)) == 0) {
                 sum = sum + Administrator.earnedMoney.get(i);
             }
         }

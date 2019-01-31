@@ -5,7 +5,6 @@ import InstanceModels.*;
 import Interfaces.iActionsWithEquipment;
 import org.apache.log4j.Logger;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
@@ -76,7 +75,7 @@ public class AdministratorActions implements iActionsWithEquipment {
         amountFixedEquipment++;
         earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
         Date date = convertStringDateIntoDate(equipment.getEquipmentDateOfBuying());
-        Administrator.earnedMoneyEachDay.add(date);
+        Administrator.datesOfGettingRevenues.add(date);
         return amountFixedEquipment;
     }
 
