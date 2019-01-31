@@ -66,11 +66,11 @@ public class Menu {
                 drawMainMenu();
                 break;
             }
-            case 1: {/*
-                Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
+            case 1: {
+             /*   Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
                 Client client1 = new Client("CL1", "CL1", "CL1");
-                clientActions.giveEquipment(coffeMachine, client1);
-                break;*/
+                clientActions.giveEquipment(coffeMachine, client1);*/
+                break;
             }
             case 2: {
                 clientActions.getEquipment(null);

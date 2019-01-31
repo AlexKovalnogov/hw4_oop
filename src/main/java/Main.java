@@ -13,10 +13,10 @@ public class Main {
         Equipment coffeMachine0 = new Equipment("1", 2000, "good", "23/06/2018");
         Equipment coffeMachine1 = new Equipment("2", 1000, "good1", "23/06/2018");
         Equipment coffeMachine2 = new Equipment("2", 500, "good1", "24/06/2018");
-        new Menu().drawMainMenu();
+      //  new Menu().drawMainMenu();
 
 
- /*       try{
+       try{
   new ClientActions().giveEquipment(coffeMachine0,client1);
    new ClientActions().giveEquipment(coffeMachine1,client2);
         new ClientActions().giveEquipment(coffeMachine2,client3);
@@ -26,7 +26,7 @@ catch ( Exception e)
 {
     System.out.println("Date lies between from and to date");
 }
-*/
+
 
 
     }

@@ -17,6 +17,7 @@ import static InstanceModels.Administrator.earnedMoney;
 public class AdministratorActions implements iActionsWithEquipment {
 
     Logger logger = Logger.getLogger(AdministratorActions.class);
+
     private Serviceman getServicemanFromList() throws NullPointerException {
         Serviceman s = new Serviceman();
         for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
@@ -54,7 +55,7 @@ public class AdministratorActions implements iActionsWithEquipment {
         return getServicemanFromList().idNumber;
     }
 
-    public String giveEquipmentToClient(Equipment equipment)throws NullPointerException {
+    public String giveEquipmentToClient(Equipment equipment) throws NullPointerException {
         Client client = getClient(equipment);
         logger.info("InstanceModels.Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
         new ClientActions().getEquipment(equipment.equipmentId);
@@ -65,8 +66,7 @@ public class AdministratorActions implements iActionsWithEquipment {
         return Administrator.clientIdClientInstance.get(Administrator.clientIdEquipmentId.get(equipment.equipmentId));
     }
 
-
-    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment, Client client)  {
+    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment, Client client) {
         Administrator.listOfClients.add(client.secondName);
         Administrator.clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
         Administrator.clientIdClientInstance.put(client.idNumber, client);
@@ -75,8 +75,8 @@ public class AdministratorActions implements iActionsWithEquipment {
     private int addInfoAboutFixedEquipmentForReport(Equipment equipment) throws Exception {
         amountFixedEquipment++;
         earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
-        Date date=convertStringDateIntoDate(equipment.getEquipmentDateOfBuying());
-        Administrator.earnedMoneyEachDay.put(date,equipment.getEquipmentPrice() * 0.1);
+        Date date = convertStringDateIntoDate(equipment.getEquipmentDateOfBuying());
+        Administrator.earnedMoneyEachDay.add(date);
         return amountFixedEquipment;
     }
 
@@ -97,8 +97,9 @@ public class AdministratorActions implements iActionsWithEquipment {
         return Administrator.listOfClients;
 
     }
-private Date convertStringDateIntoDate(String date)throws  Exception{
-  return new SimpleDateFormat("dd/MM/yyyy").parse(date);
-}
+
+    private Date convertStringDateIntoDate(String date) throws Exception {
+        return new SimpleDateFormat("dd/MM/yyyy").parse(date);
+    }
 
 }

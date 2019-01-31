@@ -12,7 +12,6 @@ import static InstanceModels.Director.PERSENT_TAX;
 import static InstanceModels.Employee.listOfEmployees;
 
 
-
 public class DirectorActions implements iPayment {
 
     private Logger logger = Logger.getLogger(DirectorActions.class);
@@ -24,7 +23,7 @@ public class DirectorActions implements iPayment {
 
     public void hireEmployee(StaffPositionInServiceCentre position) {
         String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: "};
-        List <String> variablesForEmployee = new ArrayList<String>();
+        List<String> variablesForEmployee = new ArrayList<String>();
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < arrayOfLabels.length; i++) {
             System.out.println(arrayOfLabels[i]);
@@ -52,9 +51,9 @@ public class DirectorActions implements iPayment {
     }
 
     public double payTax() {
-        double sumOfEarnedMoney=  new AdministratorActions().getSummOfEarnedMoney();
-        logger.info("payTax "+sumOfEarnedMoney*PERSENT_TAX);
-        return sumOfEarnedMoney*PERSENT_TAX;
+        double sumOfEarnedMoney = new AdministratorActions().getSummOfEarnedMoney();
+        logger.info("payTax " + sumOfEarnedMoney * PERSENT_TAX);
+        return sumOfEarnedMoney * PERSENT_TAX;
     }
 
     public void paySalary() {
@@ -75,15 +74,16 @@ public class DirectorActions implements iPayment {
         logger.info("increaseSalaryForEmployees");
 
     }
-    public Double getRevenues(String date ) throws  Exception {
-        Date d=new SimpleDateFormat("dd/MM/yyyy").parse(date);
-     double sum=0;
-      for(Map.Entry<Date,Double> map: Administrator.earnedMoneyEachDay.entrySet()){
-          if (d.compareTo(map.getKey())==0){
-             sum=sum+ map.getValue();
-          }
-      }
-        logger.info("getRevenues for day "+sum);
+
+    public Double getRevenues(String date) throws Exception {
+        Date d = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        double sum = 0;
+        for (int i = 0; i < Administrator.earnedMoneyEachDay.size() - 1; i++) {
+            if (d.compareTo(Administrator.earnedMoneyEachDay.get(i)) == 0) {
+                sum = sum + Administrator.earnedMoney.get(i);
+            }
+        }
+        logger.info("getRevenues for day " + sum);
         return sum;
     }
 

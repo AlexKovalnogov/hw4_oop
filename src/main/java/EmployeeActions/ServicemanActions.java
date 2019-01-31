@@ -16,7 +16,7 @@ public class ServicemanActions {
         return equipment.equipmentId;//administrator.idNumber;
     }
 
-    public String giveEquipment(Equipment equipment, String administratorId)throws NullPointerException {
+    public String giveEquipment(Equipment equipment, String administratorId) throws NullPointerException {
         logger.info("InstanceModels.Serviceman gives equipment to administrator");
         new AdministratorActions().giveEquipmentToClient(equipment);
         // return equipment.equipmentId; //administrator.idNumber;
