@@ -11,7 +11,6 @@ public class ClientActions {
 
     Logger logger = Logger.getLogger(ClientActions.class);
 
-
     public String giveEquipment(Equipment equipment, Client client) throws Exception {
         logger.info("InstanceModels.Client gives equipment to administrator");
         return new AdministratorActions().getEquipmentForFixing(equipment, client);

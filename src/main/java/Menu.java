@@ -3,8 +3,6 @@ import Equipment.Equipment;
 import InstanceModels.Administrator;
 import InstanceModels.Client;
 import org.apache.log4j.Logger;
-
-
 import java.util.Scanner;
 
 
@@ -55,7 +53,7 @@ public class Menu {
         }
     }
 
-    private void drawClientMenu() {
+    private void drawClientMenu()throws Exception  {
         ClientActions clientActions = new ClientActions();
         System.out.print("1)сдать товар на ремонт" + "\n" +
                 "2)забрать товар по идентификационному коду" + "\n" +
@@ -67,12 +65,11 @@ public class Menu {
                 break;
             }
             case 1: {
-                try {
+
                     Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
                     Client client1 = new Client("CL1", "CL1", "CL1");
                     clientActions.giveEquipment(coffeMachine, client1);
-                }
-                catch (Exception e){ logger.info("Action is unavailable " + e);}
+
                 break;
             }
             case 2: {
@@ -126,7 +123,7 @@ public class Menu {
         }
     }
 
-    private void drawDirectorMenu() {
+    private void drawDirectorMenu() throws  Exception{
         DirectorActions directorActions = new DirectorActions();
         System.out.print("1) сменить место расположения сервисного центра" + "\n" +
                 "2) нанять сотрудника" + "\n" +
@@ -174,7 +171,7 @@ public class Menu {
                 break;
             }
             case 7: {
-
+                directorActions.getRevenues("23/06/1990") ;
                 break;
             }
             case 8: {

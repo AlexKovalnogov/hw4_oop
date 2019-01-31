@@ -16,7 +16,6 @@ public class DirectorActions implements iPayment {
 
     private Logger logger = Logger.getLogger(DirectorActions.class);
 
-
     public void changeLocationOfServiceCenter() {
         logger.info("changeLocationOfServiceCenter");
     }
