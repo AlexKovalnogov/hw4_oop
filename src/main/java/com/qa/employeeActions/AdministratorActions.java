@@ -18,15 +18,15 @@ public class AdministratorActions implements IActionsWithEquipment {
 
     Logger logger = Logger.getLogger(AdministratorActions.class);
 
-    private Serviceman getServicemanFromList() throws NullPointerException {
-        Serviceman s = new Serviceman();
+    private Serviceman getServicemanFromList() throws Exception {
+     //change to foreach
         for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
             if (Employee.listOfEmployees.get(i) instanceof Serviceman) {
-                s = (Serviceman) Employee.listOfEmployees.get(i);
-                break;
+                 return  (Serviceman) Employee.listOfEmployees.get(i);
+                // break;
             }
         }
-        return s;
+        throw new  Exception();
     }
 
     private Administrator getAdministratorFromList() {
