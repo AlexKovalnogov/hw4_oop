@@ -1,10 +1,14 @@
 package EmployeeActions;
 
-import InstanceModels.*;
+import InstanceModels.Administrator;
+import InstanceModels.Director;
+import InstanceModels.Employee;
+import InstanceModels.Serviceman;
 import Interfaces.iPayment;
 import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 import static InstanceModels.Director.PERSENT_INCREASING_SALARY;
@@ -74,14 +78,31 @@ public class DirectorActions implements iPayment {
 
     }
 
-    public Double getRevenues(String date) throws Exception {
+    public Double getRevenues(String date, TypeOfRevenue t) throws Exception {
         Date d = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         double sum = 0;
-        for (int i = 0; i < Administrator.datesOfGettingRevenues.size() - 1; i++) {
-            if (d.compareTo(Administrator.datesOfGettingRevenues.get(i)) == 0) {
-                sum = sum + Administrator.earnedMoney.get(i);
-            }
+        switch (t) {
+            case DAY:
+                for (int i = 0; i < Administrator.datesOfGettingRevenues.size() - 1; i++) {
+                    if (d.compareTo(Administrator.datesOfGettingRevenues.get(i)) == 0) {
+                        sum = sum + Administrator.earnedMoney.get(i);
+                    }
+                }
+                break;
+            case WEEK:
+                break;
+            case MONTH:
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(d);
+                int month = cal.get(Calendar.MONTH);
+                for (int i = 0; i < Administrator.datesOfGettingRevenues.size() - 1; i++) {
+                    if (d.compareTo(Administrator.datesOfGettingRevenues.get(i)) == 0) {
+                        sum = sum + Administrator.earnedMoney.get(i);
+                    }
+                }
+                break;
         }
+
         logger.info("getRevenues for day " + sum);
         return sum;
     }

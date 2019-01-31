@@ -21,7 +21,7 @@ public class Main {
   new ClientActions().giveEquipment(coffeMachine0,client1);
    new ClientActions().giveEquipment(coffeMachine1,client2);
         new ClientActions().giveEquipment(coffeMachine2,client3);
-            new DirectorActions().getRevenues("23/06/2018");
+            new DirectorActions().getRevenues("23/06/2018",DAY);
         }
 catch ( Exception e)
 {
