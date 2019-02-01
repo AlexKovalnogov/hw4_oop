@@ -1,6 +1,9 @@
 package com.qa.employeeActions;
-import com.qa.models.*;
 import com.qa.interfaces.IPayment;
+import com.qa.models.Administrator;
+import com.qa.models.Director;
+import com.qa.models.Employee;
+import com.qa.models.Serviceman;
 import org.apache.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -39,12 +42,12 @@ public class DirectorActions implements IPayment {
                 listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
                 break;
         }
-        logger.info("com.qa.models.Employee is hired");
+        logger.info("Employee is hired");
     }
 
     public void fireEmployee(int indexOfEmployeeInList) {
         listOfEmployees.remove(indexOfEmployeeInList);
-        logger.info("com.qa.models.Employee" + indexOfEmployeeInList + " is fired");
+        logger.info("Employee" + indexOfEmployeeInList + " is fired");
     }
 
     public double payTax() {

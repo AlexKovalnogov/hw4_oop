@@ -17,7 +17,7 @@ public class ServicemanActions {
     }
 
     public String giveEquipment(Equipment equipment, String administratorId) throws NullPointerException {
-        logger.info("com.qa.models.Serviceman gives equipment to administrator");
+        logger.info("Serviceman gives equipment to administrator");
         new AdministratorActions().giveEquipmentToClient(equipment);
         // return equipment.equipmentId; //administrator.idNumber;
         return administratorId;

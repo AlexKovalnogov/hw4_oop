@@ -1,4 +1,7 @@
-import com.qa.models.*;
+import com.qa.models.Administrator;
+import com.qa.models.Director;
+import com.qa.models.Employee;
+import com.qa.models.Serviceman;
 
 public class GoToService {
 

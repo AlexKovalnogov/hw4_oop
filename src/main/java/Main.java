@@ -1,5 +1,12 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.qa.models.Client;
 import com.qa.models.Equipment;
-import com.qa.models.*;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,8 +17,25 @@ public class Main {
         Equipment coffeMachine0 = new Equipment("1", 2000, "good", "23/06/2018");
         Equipment coffeMachine1 = new Equipment("2", 1000, "good1", "23/06/2018");
         Equipment coffeMachine2 = new Equipment("2", 500, "good1", "24/06/2018");
-        new Menu().drawMainMenu();
+       // new Menu().drawMainMenu();
+        String jsonInString;
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<Equipment> equipment1 = new ArrayList<Equipment>();
+        equipment1.add(coffeMachine0);
+        equipment1.add(coffeMachine1);
 
+        try{
+            FileWriter writer = new FileWriter( "D:\\GitHub\\hw4_oop\\src\\main\\resources\\equipment.json");
+            gson.toJson(equipment1,writer);
+            gson.toJson(equipment1,writer);
+             //jsonInString = gson.toJson(coffeMachine0);
+           // writer.flush();
+            writer.close();
+        }
+        catch ( Exception e)
+        {
+
+        }
 
 /*
        try{

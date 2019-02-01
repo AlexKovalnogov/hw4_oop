@@ -91,11 +91,11 @@ public class Menu {
         switch (scanner.nextInt()) {
             case 0: {
                 drawMainMenu();
-                break;
+
             }
             case 1: {
                 administratorActions.getListOfClients();
-                break;
+                drawAdministratorMenu();
             }
             case 2: {
                 try {

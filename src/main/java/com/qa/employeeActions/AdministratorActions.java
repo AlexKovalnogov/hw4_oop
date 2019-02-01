@@ -1,9 +1,8 @@
 package com.qa.employeeActions;
 
-import com.qa.exceptions.ExceptionForAdministratorActions;
-import com.qa.models.Equipment;
-import com.qa.models.*;
 import com.qa.interfaces.IActionsWithEquipment;
+import com.qa.models.*;
+import com.qa.models.Equipment;
 import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
@@ -44,21 +43,27 @@ public class AdministratorActions implements IActionsWithEquipment {
         addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
         addInfoAboutFixedEquipmentForReport(equipment);
         Administrator administrator = getAdministratorFromList();
-        logger.info("com.qa.models.Administrator gets equipment,calculate amount of money and move to service department");
+        logger.info("Administrator gets equipment,calculate amount of money and move to service department");
         giveEquipment(equipment, administrator);
         return equipment.equipmentId;
 
     }
 
     public String giveEquipment(Equipment equipment, Administrator administrator) {
-        logger.info("com.qa.models.Administrator gives equipment to serviceman");
+
+        try{
+        logger.info("Administrator gives equipment to serviceman");
         new ServicemanActions().fixProblemWithEquipment(equipment, administrator);
-        return getServicemanFromList().idNumber;
+        return getServicemanFromList().idNumber;}
+        catch (Exception e){
+
+        }
+        return null;
     }
 
     public String giveEquipmentToClient(Equipment equipment) throws NullPointerException {
         Client client = getClient(equipment);
-        logger.info("com.qa.models.Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
+        logger.info("Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
         new ClientActions(client).getEquipment(equipment.equipmentId);
         return equipment.equipmentId + client.firstName;
     }
@@ -89,7 +94,7 @@ public class AdministratorActions implements IActionsWithEquipment {
     }
 
     public int getReportAboutFixedEquipment(int amountFixedEquipment) throws NullPointerException {
-        logger.info("amount of Fixed com.qa.models.Equipment = " + amountFixedEquipment);
+        logger.info("amount of Fixed Equipment = " + amountFixedEquipment);
         return amountFixedEquipment;
     }
 
