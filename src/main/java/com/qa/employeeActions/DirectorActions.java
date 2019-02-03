@@ -1,53 +1,44 @@
 package com.qa.employeeActions;
+
+import com.qa.Service;
+import com.qa.convertToJson.ConvertModelToJson;
 import com.qa.interfaces.IPayment;
-import com.qa.models.Administrator;
-import com.qa.models.Director;
-import com.qa.models.Employee;
-import com.qa.models.Serviceman;
+import com.qa.models.*;
 import org.apache.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static com.qa.Service.listOfEmployees;
 import static com.qa.models.Director.PERSENT_INCREASING_SALARY;
 import static com.qa.models.Director.PERSENT_TAX;
-import static com.qa.models.Employee.listOfEmployees;
 
 
 public class DirectorActions implements IPayment {
 
     private Logger logger = Logger.getLogger(DirectorActions.class);
 
-    public void changeLocationOfServiceCenter() {
-        logger.info("changeLocationOfServiceCenter");
+    public String changeLocationOfServiceCenter(String newAddress) {
+        Service.serviceAddress = newAddress;
+        return Service.serviceAddress;
     }
 
-    public void hireEmployee(StaffPositionInServiceCentre position) {
-        String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: "};
-        List<String> variablesForEmployee = new ArrayList<String>();
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < arrayOfLabels.length; i++) {
-            System.out.println(arrayOfLabels[i]);
-            String buf = scanner.nextLine();
-            variablesForEmployee.add(buf);
-        }
-        scanner.close();
+    public void hireEmployee(StaffPositionInServiceCentre position, List <String> variablesForEmployee) {
         switch (position) {
-            case DIRECTOR:
-                listOfEmployees.add(new Director(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
-                break;
             case ADMINISTRATOR:
-                listOfEmployees.add(new Administrator(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
+                listOfEmployees.add(new Administrator(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3)), "ADMINISTRATOR"));
                 break;
             case SERVICEMAN:
-                listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3))));
+                listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3)), "SERVICEMAN"));
                 break;
         }
+        new ConvertModelToJson().createJsonListOfEmployee(listOfEmployees);
         logger.info("Employee is hired");
     }
 
     public void fireEmployee(int indexOfEmployeeInList) {
         listOfEmployees.remove(indexOfEmployeeInList);
         logger.info("Employee" + indexOfEmployeeInList + " is fired");
+        new ConvertModelToJson().createJsonListOfEmployee(listOfEmployees);
     }
 
     public double payTax() {
@@ -56,23 +47,27 @@ public class DirectorActions implements IPayment {
         return sumOfEarnedMoney * PERSENT_TAX;
     }
 
-    public void paySalary() {
+    public double paySalary() {
+
         logger.info("paySalary");
+        return 1.0;
     }
 
     public List<Employee> getListOfEmployees() {
         logger.info("List of Employee is present");
+        for(Employee employee:listOfEmployees){
+            logger.info(employee.toString());}
         return listOfEmployees;
     }
 
-    public void increaseSalaryForEmployees() {
+    public List<Employee> increaseSalaryForEmployees() {
         List<Employee> listOfEmployee = getListOfEmployees();
         for (Employee empl : listOfEmployee) {
-            empl.salary = empl.salary * PERSENT_INCREASING_SALARY;
+            empl.setSalary(empl.getSalary() * PERSENT_INCREASING_SALARY);
         }
-
         logger.info("increaseSalaryForEmployees");
-
+        getListOfEmployees();
+        return listOfEmployee;
     }
 
     public Double getRevenues(String date, TypeOfRevenue t) throws Exception {
@@ -80,30 +75,39 @@ public class DirectorActions implements IPayment {
         double sum = 0;
         switch (t) {
             case DAY:
-                for (int i = 0; i < Administrator.datesOfGettingRevenues.size() - 1; i++) {
-                    if (d.compareTo(Administrator.datesOfGettingRevenues.get(i)) == 0) {
-                        sum = sum + Administrator.earnedMoney.get(i);
+                for (int i = 0; i < Service.datesOfGettingRevenues.size() - 1; i++) {
+                    if (d.compareTo(Service.datesOfGettingRevenues.get(i)) == 0) {
+                        sum = sum + Service.earnedMoney.get(i);
                     }
                 }
+                logger.info("getRevenues for day " + sum);
                 break;
             case WEEK:
                 break;
             case MONTH:
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(d);
-                int month = cal.get(Calendar.MONTH);
-                for (int i = 0; i < Administrator.datesOfGettingRevenues.size() - 1; i++) {
-                    if (d.compareTo(Administrator.datesOfGettingRevenues.get(i)) == 0) {
-                        sum = sum + Administrator.earnedMoney.get(i);
+                int month = cal.get(Calendar.MONTH)+1;
+                int currentmonth=getMonthForDate(date);
+                for (int i = 0; i < Service.datesOfGettingRevenues.size() ; i++) {
+                    if ( month==currentmonth) {
+                        sum = sum + Service.earnedMoney.get(i);
                     }
                 }
+                logger.info("getRevenues for month " + sum);
                 break;
         }
 
-        logger.info("getRevenues for day " + sum);
+        logger.info("getRevenues ");
         return sum;
     }
-
+private int getMonthForDate(String inputDate)
+{  String [] date =new String[3] ;
+    for (int i = 0; i <2 ; i++) {
+    date = inputDate.split("/");
+    }
+    return Integer.parseInt(date[1]);
+}
 
 }
 

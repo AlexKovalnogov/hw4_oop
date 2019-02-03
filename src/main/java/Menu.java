@@ -1,8 +1,12 @@
+import com.qa.Service;
 import com.qa.employeeActions.*;
 import com.qa.models.Equipment;
 import com.qa.models.Administrator;
 import com.qa.models.Client;
 import org.apache.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -79,7 +83,7 @@ public class Menu {
         }
     }
 
-    private void drawAdministratorMenu() {
+    private void drawAdministratorMenu()  throws Exception {
         AdministratorActions administratorActions = new AdministratorActions();
         System.out.print("1) Посмотреть всех клиентов" + "\n" +
                 "2)взять на ремонт технику(цена ремонта = 10% от суммы товара)" + "\n" +
@@ -99,7 +103,7 @@ public class Menu {
             }
             case 2: {
                 try {
-                    administratorActions.getEquipmentForFixing(null, null);
+                  //  administratorActions.getEquipmentForFixing(null, null);
                 }
                 catch( Exception e){
                     System.out.print("sss");
@@ -108,7 +112,7 @@ public class Menu {
             }
 
             case 3: {
-                administratorActions.getReportAboutFixedEquipment(Administrator.amountFixedEquipment);
+                administratorActions.getReportAboutFixedEquipment(Service.amountFixedEquipment);
                 break;
             }
             case 4: {
@@ -116,7 +120,7 @@ public class Menu {
                 break;
             }
             case 5: {
-                administratorActions.giveEquipment(null, null);
+                administratorActions.giveEquipmentToServiceman(null, null);
                 break;
             }
         }
@@ -140,14 +144,25 @@ public class Menu {
                 break;
             }
             case 1: {
-                directorActions.changeLocationOfServiceCenter();
+                directorActions.changeLocationOfServiceCenter("sdfsdfsdfsdf");
                 break;
             }
             case 2: {
                 System.out.println("Input  position: Director Administrator Serviceman" + "\n");
                 Scanner pos = new Scanner(System.in);
-                directorActions.hireEmployee(StaffPositionInServiceCentre.valueOf(pos.nextLine().toUpperCase()));
+
+                String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: ", "position"};
+                List<String> variablesForEmployee = new ArrayList<String>();
+                Scanner var = new Scanner(System.in);
+                for (int i = 0; i < arrayOfLabels.length; i++) {
+                    System.out.println(arrayOfLabels[i]);
+                    String buf = var.nextLine();
+                    variablesForEmployee.add(buf);
+                }
+                scanner.close();
+                directorActions.hireEmployee(StaffPositionInServiceCentre.valueOf(pos.nextLine().toUpperCase()),variablesForEmployee);
                 pos.close();
+                var.close();
                 break;
             }
             case 3: {
@@ -180,7 +195,7 @@ public class Menu {
         }
     }
 
-    private void drawServicemanMenu() {
+    private void drawServicemanMenu()throws Exception {
         ServicemanActions servicemanActions = new ServicemanActions();
         System.out.print("1)ремонтировать" + "\n" +
                 "2) возвращать отремонтированную технику администратору" + "\n" +
@@ -192,11 +207,11 @@ public class Menu {
                 break;
             }
             case 1: {
-                servicemanActions.fixProblemWithEquipment(null, null);
+               // servicemanActions.fixProblemWithEquipment(null, null);
                 break;
             }
             case 2: {
-                servicemanActions.giveEquipment(null, null);
+            //    servicemanActions.giveEquipment(null, null);
                 break;
             }
         }

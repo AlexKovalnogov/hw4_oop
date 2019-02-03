@@ -1,5 +1,7 @@
 package com.qa.employeeActions;
 
+import com.qa.Service;
+import com.qa.exceptions.ExceptionGetSuitableEmployee;
 import com.qa.interfaces.IActionsWithEquipment;
 import com.qa.models.*;
 import com.qa.models.Equipment;
@@ -9,59 +11,79 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
-import static com.qa.models.Administrator.amountFixedEquipment;
-import static com.qa.models.Administrator.earnedMoney;
-
+import static com.qa.Service.amountFixedEquipment;
+import static com.qa.Service.earnedMoney;
+import static com.qa.Service.listOfClients;
 
 public class AdministratorActions implements IActionsWithEquipment {
+
+ /*   private final Administrator administrator;
+
+    public AdministratorActions(Administrator administrator) {
+        this.administrator = administrator;
+    }*/
 
     Logger logger = Logger.getLogger(AdministratorActions.class);
 
     private Serviceman getServicemanFromList() throws Exception {
-     //change to foreach
-        for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
-            if (Employee.listOfEmployees.get(i) instanceof Serviceman) {
-                 return  (Serviceman) Employee.listOfEmployees.get(i);
+        //change to foreach
+
+        for (Employee employee : Service.listOfEmployees) {
+            if (employee instanceof Serviceman) {
+                return (Serviceman) employee;
+            }
+        }
+        throw new ExceptionGetSuitableEmployee("Problem  caused by getting  particular Employee");
+     /*
+        for (int i = 0; i < Service.listOfEmployees.size() - 1; i++) {
+            if (Service.listOfEmployees.get(i) instanceof Serviceman) {
+                 return  (Serviceman) Service.listOfEmployees.get(i);
                 // break;
             }
         }
-        throw new  Exception();
+        throw new  Exception();*/
     }
 
-    private Administrator getAdministratorFromList() {
+    private Administrator getAdministratorFromList() throws Exception {
+        //change to foreach
+        for (Employee employee : Service.listOfEmployees) {
+            if (employee instanceof Administrator) {
+                return (Administrator) employee;
+            }
+        }
+        throw new ExceptionGetSuitableEmployee("Problem  caused by getting  particular Employee");
+    }
+ /*   private Administrator getAdministratorFromList() {
         Administrator administrator = new Administrator();
-        for (int i = 0; i < Employee.listOfEmployees.size() - 1; i++) {
-            if (Employee.listOfEmployees.get(i) instanceof Administrator) {
-                administrator = (Administrator) Employee.listOfEmployees.get(i);
+        for (int i = 0; i < Service.listOfEmployees.size() - 1; i++) {
+            if (Service.listOfEmployees.get(i) instanceof Administrator) {
+                administrator = (Administrator) Service.listOfEmployees.get(i);
                 break;
             }
         }
         return administrator;
-    }
+    }*/
+
 
     public String getEquipmentForFixing(Equipment equipment, Client client) throws Exception {
-        addNewClientAndWriteDownInfoAboutEquipmentAndClient(equipment, client);
+        registerNewClient(equipment, client);
         addInfoAboutFixedEquipmentForReport(equipment);
         Administrator administrator = getAdministratorFromList();
         logger.info("Administrator gets equipment,calculate amount of money and move to service department");
-        giveEquipment(equipment, administrator);
+        giveEquipmentToServiceman(equipment, administrator);
         return equipment.equipmentId;
 
     }
 
-    public String giveEquipment(Equipment equipment, Administrator administrator) {
 
-        try{
+    public String giveEquipmentToServiceman(Equipment equipment, Administrator administrator) throws Exception {
         logger.info("Administrator gives equipment to serviceman");
         new ServicemanActions().fixProblemWithEquipment(equipment, administrator);
-        return getServicemanFromList().idNumber;}
-        catch (Exception e){
-
-        }
-        return null;
+        return getServicemanFromList().getIdNumber();
     }
 
-    public String giveEquipmentToClient(Equipment equipment) throws NullPointerException {
+
+    public String giveEquipmentToClient(Equipment equipment) {
         Client client = getClient(equipment);
         logger.info("Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
         new ClientActions(client).getEquipment(equipment.equipmentId);
@@ -69,20 +91,21 @@ public class AdministratorActions implements IActionsWithEquipment {
     }
 
     private Client getClient(Equipment equipment) {
-        return Administrator.clientIdClientInstance.get(Administrator.clientIdEquipmentId.get(equipment.equipmentId));
+        return Service.clientIdClientInstance.get(Service.clientIdEquipmentId.get(equipment.equipmentId));
     }
 
-    private void addNewClientAndWriteDownInfoAboutEquipmentAndClient(Equipment equipment, Client client) {
-        Administrator.listOfClients.add(client.secondName);
-        Administrator.clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
-        Administrator.clientIdClientInstance.put(client.idNumber, client);
+    private void registerNewClient(Equipment equipment, Client client) {
+        listOfClients.add(client.secondName);
+        Service.clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
+        Service.clientIdClientInstance.put(client.idNumber, client);
+
     }
 
     private int addInfoAboutFixedEquipmentForReport(Equipment equipment) throws Exception {
         amountFixedEquipment++;
         earnedMoney.add(equipment.getEquipmentPrice() * 0.1);
         Date date = convertStringDateIntoDate(equipment.getEquipmentDateOfBuying());
-        Administrator.datesOfGettingRevenues.add(date);
+        Service.datesOfGettingRevenues.add(date);
         return amountFixedEquipment;
     }
 
@@ -100,7 +123,7 @@ public class AdministratorActions implements IActionsWithEquipment {
 
     public Set<String> getListOfClients() {
         logger.info("List of clients is present");
-        return Administrator.listOfClients;
+        return Service.listOfClients;
 
     }
 
