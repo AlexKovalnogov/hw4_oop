@@ -10,8 +10,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        new GoToService().setData();
+       // new GoToService().setData();
         Service service = new Service();
+        service.setData();
         Client client1 = new Client("CL1", "CL1", "CL1");
         Client client2 = new Client("CL2", "CL2", "CL2");
         Client client3 = new Client("CL3", "CL3", "CL3");
@@ -27,7 +28,7 @@ public class Main {
             }
         }*/
 
-        //new Menu().drawMainMenu();
+        //new com.qa.homework.Menu().drawMainMenu();
 
         String jsonInString;
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

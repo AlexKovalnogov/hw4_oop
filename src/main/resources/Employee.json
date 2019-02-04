@@ -1,0 +1,23 @@
+[
+  {
+    "firstName": "A1",
+    "secondName": "A1",
+    "idNumber": "1",
+    "salary": 500.0,
+    "position": "ADMINISTRATOR"
+  },
+  {
+    "firstName": "s1",
+    "secondName": "s1",
+    "idNumber": "3",
+    "salary": 1000.0,
+    "position": "SERVICEMAN"
+  },
+  {
+    "firstName": "D1",
+    "secondName": "D1",
+    "idNumber": "5",
+    "salary": 2000.0,
+    "position": "DIRECTOR"
+  }
+]
