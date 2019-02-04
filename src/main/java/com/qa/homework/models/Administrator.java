@@ -1,6 +1,4 @@
-package com.qa.models;
-
-import java.util.*;
+package com.qa.homework.models;
 
 
 public class Administrator extends Employee {

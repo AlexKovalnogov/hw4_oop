@@ -1,16 +1,19 @@
-package com.qa.employeeActions;
+package com.qa.homework.employeeActions;
 
-import com.qa.Service;
-import com.qa.convertToJson.ConvertModelToJson;
-import com.qa.interfaces.IPayment;
+import com.qa.homework.Service;
+import com.qa.homework.convertToJson.ConvertModelToJson;
+import com.qa.homework.interfaces.IPayment;
+import com.qa.homework.models.Administrator;
+import com.qa.homework.models.Employee;
+import com.qa.homework.models.Serviceman;
 import com.qa.models.*;
 import org.apache.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static com.qa.Service.listOfEmployees;
-import static com.qa.models.Director.PERSENT_INCREASING_SALARY;
-import static com.qa.models.Director.PERSENT_TAX;
+import static com.qa.homework.Service.listOfEmployees;
+import static com.qa.homework.models.Director.PERSENT_INCREASING_SALARY;
+import static com.qa.homework.models.Director.PERSENT_TAX;
 
 
 public class DirectorActions implements IPayment {

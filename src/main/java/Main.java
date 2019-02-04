@@ -1,23 +1,16 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.qa.JsotToPOJO.ConvertJsonToPOJO;
-import com.qa.Service;
-import com.qa.employeeActions.ClientActions;
-import com.qa.employeeActions.DirectorActions;
-import com.qa.employeeActions.TypeOfRevenue;
-import com.qa.models.Administrator;
-import com.qa.models.Client;
-import com.qa.models.Employee;
-import com.qa.models.Equipment;
+import com.qa.homework.Service;
+import com.qa.homework.models.Client;
+import com.qa.homework.models.Equipment;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-     new GoToService().setData();
+        new GoToService().setData();
         Service service = new Service();
         Client client1 = new Client("CL1", "CL1", "CL1");
         Client client2 = new Client("CL2", "CL2", "CL2");
@@ -34,30 +27,29 @@ public class Main {
             }
         }*/
 
-   //new Menu().drawMainMenu();
+        //new Menu().drawMainMenu();
 
-/*
         String jsonInString;
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Equipment> equipment1 = new ArrayList<Equipment>();
         equipment1.add(coffeMachine0);
         equipment1.add(coffeMachine1);
+        String basePath = System.getProperty("user.dir");
 
-        try{
-            FileWriter writer = new FileWriter( "D:\\GitHub\\hw4_oop\\src\\main\\resources\\equipment.json");
-            gson.toJson(equipment1,writer);
-            gson.toJson(equipment1,writer);
-             //jsonInString = gson.toJson(coffeMachine0);
-           writer.flush();
+        try {
+            FileWriter writer = new FileWriter(basePath + "\\src\\main\\resources\\equipment.json");
+
+            gson.toJson(equipment1, writer);
+            //  gson.toJson(equipment1,writer);
+            //jsonInString = gson.toJson(coffeMachine0);
+            writer.flush();
             writer.close();
+        } catch (Exception e) {
+
         }
-        catch ( Exception e)
-        {
-
-        }*/
 
 
-       try{
+    /*   try{
   new ClientActions(client1).giveEquipment(coffeMachine0);
   new ClientActions(client2).giveEquipment(coffeMachine1);
      new ClientActions(client3).giveEquipment(coffeMachine2);
@@ -66,8 +58,7 @@ public class Main {
 catch ( Exception e)
 {
     System.out.println("Date lies between from and to date  "+e);
-}
-
+}*/
 
 
     }

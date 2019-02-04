@@ -1,9 +1,6 @@
-package com.qa.models;
+package com.qa.homework.models;
 
-import com.qa.employeeActions.StaffPositionInServiceCentre;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.qa.homework.employeeActions.StaffPositionInServiceCentre;
 
 public class Employee
 {

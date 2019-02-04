@@ -1,8 +1,8 @@
-package com.qa.convertToJson;
+package com.qa.homework.convertToJson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.qa.models.Employee;
+import com.qa.homework.models.Employee;
 
 import java.io.FileWriter;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.qa.interfaces;
+package com.qa.homework.interfaces;
 
 
 public interface IPayment {

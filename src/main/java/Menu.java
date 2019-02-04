@@ -1,8 +1,7 @@
-import com.qa.Service;
-import com.qa.employeeActions.*;
-import com.qa.models.Equipment;
-import com.qa.models.Administrator;
-import com.qa.models.Client;
+import com.qa.homework.Service;
+import com.qa.homework.employeeActions.*;
+import com.qa.homework.models.Equipment;
+import com.qa.homework.models.Client;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;

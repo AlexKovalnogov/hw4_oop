@@ -1,7 +1,7 @@
-package com.qa.employeeActions;
+package com.qa.homework.employeeActions;
 
-import com.qa.models.Equipment;
-import com.qa.models.Administrator;
+import com.qa.homework.models.Equipment;
+import com.qa.homework.models.Administrator;
 import org.apache.log4j.Logger;
 
 public class ServicemanActions {

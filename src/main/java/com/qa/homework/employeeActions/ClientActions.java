@@ -1,7 +1,7 @@
-package com.qa.employeeActions;
+package com.qa.homework.employeeActions;
 
-import com.qa.models.Equipment;
-import com.qa.models.Client;
+import com.qa.homework.models.Equipment;
+import com.qa.homework.models.Client;
 import org.apache.log4j.Logger;
 
 

@@ -1,6 +1,8 @@
-import com.qa.Service;
-import com.qa.convertToJson.ConvertModelToJson;
-import com.qa.models.*;
+import com.qa.homework.Service;
+import com.qa.homework.convertToJson.ConvertModelToJson;
+import com.qa.homework.models.Administrator;
+import com.qa.homework.models.Director;
+import com.qa.homework.models.Serviceman;
 
 
 public class GoToService {

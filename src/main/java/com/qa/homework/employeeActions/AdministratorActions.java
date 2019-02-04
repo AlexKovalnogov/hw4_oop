@@ -1,19 +1,20 @@
-package com.qa.employeeActions;
+package com.qa.homework.employeeActions;
 
-import com.qa.Service;
-import com.qa.exceptions.ExceptionGetSuitableEmployee;
-import com.qa.interfaces.IActionsWithEquipment;
-import com.qa.models.*;
-import com.qa.models.Equipment;
+import com.qa.homework.Service;
+import com.qa.homework.exceptions.ExceptionGetSuitableEmployee;
+import com.qa.homework.interfaces.IActionsWithEquipment;
+import com.qa.homework.models.*;
+import com.qa.homework.models.*;
+import com.qa.homework.models.Equipment;
 import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
-import static com.qa.Service.amountFixedEquipment;
-import static com.qa.Service.earnedMoney;
-import static com.qa.Service.listOfClients;
+import static com.qa.homework.Service.amountFixedEquipment;
+import static com.qa.homework.Service.earnedMoney;
+import static com.qa.homework.Service.listOfClients;
 
 public class AdministratorActions implements IActionsWithEquipment {
 

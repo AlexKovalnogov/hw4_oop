@@ -1,8 +1,8 @@
-package com.qa.JsotToPOJO;
+package com.qa.homework.JsotToPOJO;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.qa.models.Employee;
+import com.qa.homework.models.Employee;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;

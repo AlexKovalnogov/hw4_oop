@@ -1,4 +1,4 @@
-package com.qa.models;
+package com.qa.homework.models;
 
 public class Serviceman extends Employee {
     public Serviceman() {

@@ -1,4 +1,4 @@
-package com.qa.employeeActions;
+package com.qa.homework.employeeActions;
 
 public enum StaffPositionInServiceCentre {
     DIRECTOR,

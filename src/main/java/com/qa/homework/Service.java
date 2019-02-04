@@ -1,7 +1,7 @@
-package com.qa;
+package com.qa.homework;
 
-import com.qa.models.Client;
-import com.qa.models.Employee;
+import com.qa.homework.models.Client;
+import com.qa.homework.models.Employee;
 
 import java.util.*;
 

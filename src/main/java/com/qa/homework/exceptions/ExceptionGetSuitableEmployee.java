@@ -1,4 +1,4 @@
-package com.qa.exceptions;
+package com.qa.homework.exceptions;
 
 public class ExceptionGetSuitableEmployee extends Exception {
     public ExceptionGetSuitableEmployee() {
