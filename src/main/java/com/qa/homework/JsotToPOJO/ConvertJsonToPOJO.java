@@ -2,15 +2,13 @@ package com.qa.homework.JsotToPOJO;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.qa.homework.models.Administrator;
-import com.qa.homework.models.Director;
-import com.qa.homework.models.Employee;
-import com.qa.homework.models.Serviceman;
+import com.qa.homework.models.*;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ConvertJsonToPOJO {
 
@@ -27,6 +25,19 @@ public class ConvertJsonToPOJO {
         Type foundListType = new TypeToken<ArrayList<Employee>>(){}.getType();
         List<Employee> employees = gson.fromJson(fileReader, foundListType);
         return getListOfEmployeesWithDefinedObjects(employees);
+    }
+
+    public Set<Client> convertJsonFileToPojoSetOfClient() {
+        Gson gson = new Gson();
+        FileReader fileReader = null;
+        String basePath = System.getProperty("user.dir");
+        try {
+            fileReader = new FileReader(basePath+"\\src\\main\\resources\\clients.json");
+        } catch (Exception e) {
+            System.out.println("Exception "+e);
+        }
+        Type foundListType = new TypeToken<Set<Client>>(){}.getType();
+        return   gson.fromJson(fileReader, foundListType);
     }
 
     private List<Employee> getListOfEmployeesWithDefinedObjects(List<Employee> list) {

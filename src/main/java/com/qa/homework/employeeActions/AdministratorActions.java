@@ -2,6 +2,7 @@ package com.qa.homework.employeeActions;
 
 import com.qa.homework.JsotToPOJO.ConvertJsonToPOJO;
 import com.qa.homework.Service;
+import com.qa.homework.convertToJson.ConvertModelToJson;
 import com.qa.homework.exceptions.ExceptionGetSuitableEmployee;
 import com.qa.homework.interfaces.IActionsWithEquipment;
 import com.qa.homework.models.*;
@@ -11,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +22,7 @@ import static com.qa.homework.Service.listOfClients;
 
 public class AdministratorActions implements IActionsWithEquipment {
 
- /*   private final Administrator administrator;
+  /*  private final Administrator administrator;
 
     public AdministratorActions(Administrator administrator) {
         this.administrator = administrator;
@@ -29,7 +31,6 @@ public class AdministratorActions implements IActionsWithEquipment {
     Logger logger = Logger.getLogger(AdministratorActions.class);
 
     private Serviceman getServicemanFromList() throws Exception {
-        //change to foreach
         List<Employee> listOfEmployees=new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
         for (Employee employee :listOfEmployees) {
             if (employee instanceof Serviceman) {
@@ -41,7 +42,6 @@ public class AdministratorActions implements IActionsWithEquipment {
     }
 
     private Administrator getAdministratorFromList() throws Exception {
-        //change to foreach
         List<Employee> listOfEmployees=new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
         for (Employee employee :listOfEmployees) {
             if (employee instanceof Administrator) {
@@ -50,17 +50,6 @@ public class AdministratorActions implements IActionsWithEquipment {
         }
         throw new ExceptionGetSuitableEmployee("Problem  caused by getting  particular Employee");
     }
- /*   private Administrator getAdministratorFromList() {
-        Administrator administrator = new Administrator();
-        for (int i = 0; i < Service.listOfEmployees.size() - 1; i++) {
-            if (Service.listOfEmployees.get(i) instanceof Administrator) {
-                administrator = (Administrator) Service.listOfEmployees.get(i);
-                break;
-            }
-        }
-        return administrator;
-    }*/
-
 
     public String getEquipmentForFixing(Equipment equipment, Client client) throws Exception {
         registerNewClient(equipment, client);
@@ -78,21 +67,23 @@ public class AdministratorActions implements IActionsWithEquipment {
         return getServicemanFromList().getIdNumber();
     }
 
-    public String giveEquipmentToClient(Equipment equipment) {
+    public Equipment giveEquipmentToClient(Equipment equipment) {
         Client client = getClient(equipment);
         logger.info("Administrator gives equipment for client   " + equipment.equipmentId + " " + client.firstName);
         new ClientActions(client).getEquipment(equipment.equipmentId);
-        return equipment.equipmentId + client.firstName;
+        return equipment;
     }
 
     private Client getClient(Equipment equipment) {
         return Service.clientIdClientInstance.get(Service.clientIdEquipmentId.get(equipment.equipmentId));
     }
 
-    private void registerNewClient(Equipment equipment, Client client) {
-        listOfClients.add(client.secondName);
+    private Set<Client> registerNewClient(Equipment equipment, Client client) {
+     listOfClients.add(client);
+        new ConvertModelToJson().createJsonFile(listOfClients);
         Service.clientIdEquipmentId.put(equipment.equipmentId, client.idNumber);
         Service.clientIdClientInstance.put(client.idNumber, client);
+        return new ConvertJsonToPOJO().convertJsonFileToPojoSetOfClient();
 
     }
 
@@ -116,9 +107,10 @@ public class AdministratorActions implements IActionsWithEquipment {
         return amountFixedEquipment;
     }
 
-    public Set<String> getListOfClients() {
+    public Set<Client> getListOfClients() {
         logger.info("List of clients is present");
-        return Service.listOfClients;
+        return  new ConvertJsonToPOJO().convertJsonFileToPojoSetOfClient();
+
 
     }
 

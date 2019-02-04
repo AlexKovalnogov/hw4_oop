@@ -10,7 +10,6 @@ import org.apache.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-//import static com.qa.homework.Service.listOfEmployees;
 import static com.qa.homework.models.Director.PERSENT_INCREASING_SALARY;
 import static com.qa.homework.models.Director.PERSENT_TAX;
 
@@ -34,7 +33,7 @@ public class DirectorActions implements IPayment {
                 listOfEmployees.add(new Serviceman(variablesForEmployee.get(0), variablesForEmployee.get(1), variablesForEmployee.get(2), Double.parseDouble(variablesForEmployee.get(3)), "SERVICEMAN"));
                 break;
         }
-        new ConvertModelToJson().createJsonListOfEmployee(listOfEmployees);
+        new ConvertModelToJson().createJsonFile(listOfEmployees);
         logger.info("Employee is hired");
         return new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
 
@@ -44,7 +43,7 @@ public class DirectorActions implements IPayment {
         List<Employee> listOfEmployees = new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
         listOfEmployees.remove(indexOfEmployeeInList);
         logger.info("Employee" + indexOfEmployeeInList + " is fired");
-        new ConvertModelToJson().createJsonListOfEmployee(listOfEmployees);
+        new ConvertModelToJson().createJsonFile(listOfEmployees);
         return new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
     }
 
