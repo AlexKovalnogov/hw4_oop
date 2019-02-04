@@ -57,9 +57,9 @@ public class Menu {
         }
     }
 
-    private void drawClientMenu()throws Exception  {
-        Client client1 = new Client("CL1", "CL1", "CL1");
-        ClientActions clientActions = new ClientActions(client1);
+    private void drawClientMenu() throws Exception {
+        Client client = new Client("CL", "CL", "CL");
+        ClientActions clientActions = new ClientActions(client);
         System.out.print("1)сдать товар на ремонт" + "\n" +
                 "2)забрать товар по идентификационному коду" + "\n" +
                 "0)Назад" + "\n");
@@ -70,20 +70,22 @@ public class Menu {
                 break;
             }
             case 1: {
-                    Equipment coffeMachine = new Equipment("1", 200, "good", "23/06/2018");
-                    clientActions.giveEquipment(coffeMachine);
-
+                Equipment coffeMachine = new Equipment("12", 2020, "good", "23/06/2018");
+                clientActions.giveEquipment(coffeMachine);
                 break;
             }
             case 2: {
                 clientActions.getEquipment(null);
-
                 break;
+            }
+            default: {
+                System.out.print("Wrong input" + "\n");
+                drawClientMenu();
             }
         }
     }
 
-    private void drawAdministratorMenu()  throws Exception {
+    private void drawAdministratorMenu() throws Exception {
         AdministratorActions administratorActions = new AdministratorActions();
         System.out.print("1) Посмотреть всех клиентов" + "\n" +
                 "2)взять на ремонт технику(цена ремонта = 10% от суммы товара)" + "\n" +
@@ -103,9 +105,8 @@ public class Menu {
             }
             case 2: {
                 try {
-                  //  administratorActions.getEquipmentForFixing(null, null);
-                }
-                catch( Exception e){
+                    //  administratorActions.getEquipmentForFixing(null, null);
+                } catch (Exception e) {
                     System.out.print("sss");
                 }
                 break;
@@ -123,10 +124,14 @@ public class Menu {
                 administratorActions.giveEquipmentToServiceman(null, null);
                 break;
             }
+            default: {
+                System.out.print("Wrong input" + "\n");
+                drawAdministratorMenu();
+            }
         }
     }
 
-    private void drawDirectorMenu() {
+    private void drawDirectorMenu() throws Exception {
         DirectorActions directorActions = new DirectorActions();
         System.out.print("1) сменить место расположения сервисного центра" + "\n" +
                 "2) нанять сотрудника" + "\n" +
@@ -144,16 +149,16 @@ public class Menu {
                 break;
             }
             case 1: {
-                Scanner scan=  new Scanner(System.in);
-                String inputData=scan.nextLine();
+                Scanner scan = new Scanner(System.in);
+                String inputData = scan.nextLine();
                 directorActions.changeLocationOfServiceCenter(inputData);
-              //  drawDirectorMenu();
+                //  drawDirectorMenu();
                 break;
             }
             case 2: {
                 System.out.println("Input  position: Director Administrator Serviceman" + "\n");
                 Scanner pos = new Scanner(System.in);
-                String position=pos.nextLine();
+                String position = pos.nextLine();
                 String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary:"};
                 List<String> variablesForEmployee = new ArrayList<String>();
                 Scanner var = new Scanner(System.in);
@@ -163,7 +168,7 @@ public class Menu {
                     variablesForEmployee.add(buf);
                 }
                 scanner.close();
-                directorActions.hireEmployee(StaffPositionInServiceCentre.valueOf(position.toUpperCase()),variablesForEmployee);
+                directorActions.hireEmployee(StaffPositionInServiceCentre.valueOf(position.toUpperCase()), variablesForEmployee);
                 pos.close();
                 var.close();
                 break;
@@ -188,17 +193,21 @@ public class Menu {
                 break;
             }
             case 7: {
-             //   directorActions.getRevenues("23/06/1990",DAY) ;
+                directorActions.getRevenues("23/06/1990", TypeOfRevenue.DAY);
                 break;
             }
             case 8: {
                 directorActions.paySalary();
                 break;
             }
+            default: {
+                System.out.print("Wrong input" + "\n");
+                drawDirectorMenu();
+            }
         }
     }
 
-    private void drawServicemanMenu()throws Exception {
+    private void drawServicemanMenu() throws Exception {
         ServicemanActions servicemanActions = new ServicemanActions();
         System.out.print("1)ремонтировать" + "\n" +
                 "2) возвращать отремонтированную технику администратору" + "\n" +
@@ -210,12 +219,16 @@ public class Menu {
                 break;
             }
             case 1: {
-               // servicemanActions.fixProblemWithEquipment(null, null);
+                servicemanActions.fixProblemWithEquipment(null, null);
                 break;
             }
             case 2: {
-            //    servicemanActions.giveEquipment(null, null);
+                servicemanActions.giveEquipment(null, null);
                 break;
+            }
+            default: {
+                System.out.print("Wrong input" + "\n");
+                drawServicemanMenu();
             }
         }
     }

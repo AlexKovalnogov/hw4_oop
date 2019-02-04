@@ -19,5 +19,12 @@
     "idNumber": "5",
     "salary": 2000.0,
     "position": "DIRECTOR"
+  },
+  {
+    "firstName": "q",
+    "secondName": "w",
+    "idNumber": "23",
+    "salary": 1000.0,
+    "position": "ADMINISTRATOR"
   }
 ]

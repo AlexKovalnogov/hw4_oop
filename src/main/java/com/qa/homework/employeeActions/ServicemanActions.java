@@ -10,13 +10,13 @@ public class ServicemanActions {
 
     public String fixProblemWithEquipment(Equipment equipment, Administrator administrator) throws Exception {
         logger.info("Problem with equipment was fixed");
-        giveEquipment(equipment, administrator.getIdNumber());
+        giveEquipment(equipment, administrator);
         return equipment.equipmentId;
     }
 
-    public String giveEquipment(Equipment equipment, String administratorId)  {
+    public String giveEquipment(Equipment equipment, Administrator administrator) throws Exception  {
         logger.info("Serviceman gives equipment to administrator");
         new AdministratorActions().giveEquipmentToClient(equipment);
-        return administratorId;
+        return administrator.getIdNumber();
     }
 }

@@ -48,7 +48,7 @@ public class DirectorActions implements IPayment {
     }
 
     public double payTax() {
-        double sumOfEarnedMoney = new AdministratorActions().getSummOfEarnedMoney();
+        double sumOfEarnedMoney = new AdministratorActions().getSumOfEarnedMoney();
         logger.info("payTax " + sumOfEarnedMoney * PERSENT_TAX);
         return sumOfEarnedMoney * PERSENT_TAX;
     }
