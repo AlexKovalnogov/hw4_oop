@@ -76,13 +76,11 @@ public class AdministratorActions implements IActionsWithEquipment {
 
     }
 
-
     public String giveEquipmentToServiceman(Equipment equipment, Administrator administrator) throws Exception {
         logger.info("Administrator gives equipment to serviceman");
         new ServicemanActions().fixProblemWithEquipment(equipment, administrator);
         return getServicemanFromList().getIdNumber();
     }
-
 
     public String giveEquipmentToClient(Equipment equipment) {
         Client client = getClient(equipment);

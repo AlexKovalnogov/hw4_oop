@@ -6,7 +6,7 @@ import com.qa.homework.interfaces.IPayment;
 import com.qa.homework.models.Administrator;
 import com.qa.homework.models.Employee;
 import com.qa.homework.models.Serviceman;
-import com.qa.models.*;
+import com.qa.homework.models.*;
 import org.apache.log4j.Logger;
 import java.text.SimpleDateFormat;
 import java.util.*;
