@@ -126,7 +126,7 @@ public class Menu {
         }
     }
 
-    private void drawDirectorMenu() throws  Exception{
+    private void drawDirectorMenu() {
         DirectorActions directorActions = new DirectorActions();
         System.out.print("1) сменить место расположения сервисного центра" + "\n" +
                 "2) нанять сотрудника" + "\n" +
@@ -144,14 +144,17 @@ public class Menu {
                 break;
             }
             case 1: {
-                directorActions.changeLocationOfServiceCenter("sdfsdfsdfsdf");
+                Scanner scan=  new Scanner(System.in);
+                String inputData=scan.nextLine();
+                directorActions.changeLocationOfServiceCenter(inputData);
+              //  drawDirectorMenu();
                 break;
             }
             case 2: {
                 System.out.println("Input  position: Director Administrator Serviceman" + "\n");
                 Scanner pos = new Scanner(System.in);
-
-                String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary: ", "position"};
+                String position=pos.nextLine();
+                String arrayOfLabels[] = {"Input first name: ", "Input surname name: ", "Input id: ", "Input salary:"};
                 List<String> variablesForEmployee = new ArrayList<String>();
                 Scanner var = new Scanner(System.in);
                 for (int i = 0; i < arrayOfLabels.length; i++) {
@@ -160,7 +163,7 @@ public class Menu {
                     variablesForEmployee.add(buf);
                 }
                 scanner.close();
-                directorActions.hireEmployee(StaffPositionInServiceCentre.valueOf(pos.nextLine().toUpperCase()),variablesForEmployee);
+                directorActions.hireEmployee(StaffPositionInServiceCentre.valueOf(position.toUpperCase()),variablesForEmployee);
                 pos.close();
                 var.close();
                 break;

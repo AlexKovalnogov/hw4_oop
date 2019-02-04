@@ -1,5 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.qa.homework.JsotToPOJO.ConvertJsonToPOJO;
 import com.qa.homework.Service;
 import com.qa.homework.models.Client;
 import com.qa.homework.models.Equipment;
@@ -10,15 +11,18 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-       // new GoToService().setData();
         Service service = new Service();
-        service.setData();
+      //  service.setData();
         Client client1 = new Client("CL1", "CL1", "CL1");
         Client client2 = new Client("CL2", "CL2", "CL2");
         Client client3 = new Client("CL3", "CL3", "CL3");
+
         Equipment coffeMachine0 = new Equipment("1", 2000, "good", "23/06/2018");
         Equipment coffeMachine1 = new Equipment("2", 1000, "good1", "21/06/2018");
         Equipment coffeMachine2 = new Equipment("2", 500, "good1", "24/06/2018");
+
+        new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
+
 
 /*List<Employee> list =new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
         for(Employee w:list )
@@ -28,9 +32,9 @@ public class Main {
             }
         }*/
 
-        //new com.qa.homework.Menu().drawMainMenu();
+     new com.qa.homework.Menu().drawMainMenu();
 
-        String jsonInString;
+     /*   String jsonInString;
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Equipment> equipment1 = new ArrayList<Equipment>();
         equipment1.add(coffeMachine0);
@@ -48,7 +52,7 @@ public class Main {
         } catch (Exception e) {
 
         }
-
+*/
 
     /*   try{
   new ClientActions(client1).giveEquipment(coffeMachine0);

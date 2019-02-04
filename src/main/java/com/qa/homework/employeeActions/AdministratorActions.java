@@ -1,5 +1,6 @@
 package com.qa.homework.employeeActions;
 
+import com.qa.homework.JsotToPOJO.ConvertJsonToPOJO;
 import com.qa.homework.Service;
 import com.qa.homework.exceptions.ExceptionGetSuitableEmployee;
 import com.qa.homework.interfaces.IActionsWithEquipment;
@@ -10,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import static com.qa.homework.Service.amountFixedEquipment;
@@ -28,26 +30,20 @@ public class AdministratorActions implements IActionsWithEquipment {
 
     private Serviceman getServicemanFromList() throws Exception {
         //change to foreach
-
-        for (Employee employee : Service.listOfEmployees) {
+        List<Employee> listOfEmployees=new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
+        for (Employee employee :listOfEmployees) {
             if (employee instanceof Serviceman) {
                 return (Serviceman) employee;
             }
         }
         throw new ExceptionGetSuitableEmployee("Problem  caused by getting  particular Employee");
-     /*
-        for (int i = 0; i < Service.listOfEmployees.size() - 1; i++) {
-            if (Service.listOfEmployees.get(i) instanceof Serviceman) {
-                 return  (Serviceman) Service.listOfEmployees.get(i);
-                // break;
-            }
-        }
-        throw new  Exception();*/
+
     }
 
     private Administrator getAdministratorFromList() throws Exception {
         //change to foreach
-        for (Employee employee : Service.listOfEmployees) {
+        List<Employee> listOfEmployees=new ConvertJsonToPOJO().convertJsonFileToListOfPojo();
+        for (Employee employee :listOfEmployees) {
             if (employee instanceof Administrator) {
                 return (Administrator) employee;
             }

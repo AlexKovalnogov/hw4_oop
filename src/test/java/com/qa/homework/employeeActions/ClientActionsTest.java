@@ -15,7 +15,7 @@ public class ClientActionsTest {
 
     @BeforeMethod
     public void setUp() {
-        new Service().setData();
+       // new Service().setData();
         coffeMachine0 = new Equipment("1", 2000, "good", "23/06/2018");
         client1 = new Client("CL1Test", "CL1Test", "CL1Test");
         clientActions = new ClientActions(client1);
