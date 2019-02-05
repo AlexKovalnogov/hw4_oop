@@ -13,5 +13,10 @@
     "firstName": "CL1",
     "secondName": "CL1",
     "idNumber": "CL1"
+  },
+  {
+    "firstName": "CL1Test",
+    "secondName": "CL1Test",
+    "idNumber": "CL1Test"
   }
 ]

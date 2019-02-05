@@ -33,9 +33,14 @@ public class AdministratorActionsTest {
     }
 
     @Test
-    public void testThatAdministratirGivesEquipmentToServiceman() throws Exception {
-        Administrator administrator = administratorActions.getAdministratorFromList();
-        Assert.assertEquals(administratorActions.giveEquipmentToServiceman(coffeMachine0, administrator), administratorActions.getServicemanFromList().getIdNumber());
+    public void testThatAdministratorGivesEquipmentToServiceman()  {
+        try {
+            Administrator administrator = administratorActions.getAdministratorFromList();
+            Assert.assertEquals(administratorActions.giveEquipmentToServiceman(coffeMachine0, administrator), administratorActions.getServicemanFromList().getIdNumber());
+        }catch (Exception e)
+        {
+            System.out.println("Something went wrong "+e);
+        }
     }
 
     @Test

@@ -15,18 +15,16 @@ import static org.testng.Assert.*;
 
 public class DirectorActionsTest {
     private Equipment coffeMachine0;
-    private Client client1;
     private DirectorActions directorActions;
-    private  ClientActions clientActions;
+
     private Service service;
 
     @BeforeMethod
     public void setUp() {
         coffeMachine0 = new Equipment("1", 2000, "good", "23/06/2018");
-        client1 = new Client("CL1Test", "CL1Test", "CL1Test");
         directorActions = new DirectorActions();
         service = new Service();
-        clientActions=new ClientActions(client1);
+
     }
 
     @Test

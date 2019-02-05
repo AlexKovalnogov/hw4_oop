@@ -18,19 +18,28 @@ public class ServicemanActionsTest {
     private Administrator administrator;
 
     @BeforeMethod
-    public void setUp()throws  Exception {
+    public void setUp() throws Exception {
         coffeMachine0 = new Equipment("1", 2000, "good", "23/06/2018");
         servicemanActions = new ServicemanActions();
         service = new Service();
-      administrator= new AdministratorActions().getAdministratorFromList();
-    }
-    @Test
-    public void testThatServicemanCanFixProblemWithEquipment()throws  Exception   {
-        Assert.assertEquals(servicemanActions.fixProblemWithEquipment(coffeMachine0,administrator),coffeMachine0.equipmentId);
+        administrator = new AdministratorActions().getAdministratorFromList();
     }
 
     @Test
-    public void testGiveEquipment( ) throws  Exception{
-        Assert.assertEquals(servicemanActions.giveEquipment(coffeMachine0,administrator),administrator.getIdNumber());
+    public void testThatServicemanCanFixProblemWithEquipment() {
+        try {
+            Assert.assertEquals(servicemanActions.fixProblemWithEquipment(coffeMachine0, administrator), coffeMachine0.equipmentId);
+        } catch (Exception e) {
+            System.out.println("Something went wrong " + e);
+        }
+    }
+
+    @Test
+    public void testGiveEquipment() {
+        try {
+            Assert.assertEquals(servicemanActions.giveEquipment(coffeMachine0, administrator), administrator.getIdNumber());
+        } catch (Exception e) {
+            System.out.println("Something went wrong " + e);
+        }
     }
 }
