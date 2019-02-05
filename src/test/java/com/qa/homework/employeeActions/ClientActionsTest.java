@@ -9,9 +9,9 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class ClientActionsTest {
-    Equipment coffeMachine0;
-    Client client1;
-    ClientActions clientActions;
+    private Equipment coffeMachine0;
+    private Client client1;
+    private ClientActions clientActions;
 
     @BeforeMethod
     public void setUp() {

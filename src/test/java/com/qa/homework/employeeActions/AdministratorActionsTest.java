@@ -54,6 +54,6 @@ public class AdministratorActionsTest {
 
     @Test
     public void testGetListOfClients() {
-        Assert.assertEquals(administratorActions.getListOfClients(),new ConvertJsonToPOJO().convertJsonFileToPojoSetOfClient());
+        Assert.assertEquals(administratorActions.getListOfClients().size(),new ConvertJsonToPOJO().convertJsonFileToPojoSetOfClient().size());
     }
 }
