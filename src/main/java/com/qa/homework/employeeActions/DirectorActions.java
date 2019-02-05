@@ -54,7 +54,6 @@ public class DirectorActions implements IPayment {
     }
 
     public double paySalary() {
-
         logger.info("paySalary");
         return 1.0;
     }

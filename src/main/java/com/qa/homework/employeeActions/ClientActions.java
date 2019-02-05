@@ -21,7 +21,7 @@ public class ClientActions {
     }
 
     public String getEquipment(String equipmentId) {
-        logger.info("Client gets fixed equipment with  equipmentId= "+ equipmentId );
+        logger.info("Client gets fixed equipment with  equipmentId= " + equipmentId);
         return equipmentId;
     }
 }

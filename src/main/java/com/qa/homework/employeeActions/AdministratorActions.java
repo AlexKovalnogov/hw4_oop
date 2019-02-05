@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
 import static com.qa.homework.Service.amountFixedEquipment;
 import static com.qa.homework.Service.earnedMoney;
 
@@ -62,11 +63,10 @@ public class AdministratorActions implements IActionsWithEquipment {
         return equipment;
     }
 
-    private Client getClient(Equipment equipment)throws Exception {
-        if (Service.clientIdClientInstance.get(Service.clientIdEquipmentId.get(equipment.equipmentId))==null){
-             throw new ClientException("Client doesn't give equipment for fixing");
-        }
-        else{
+    private Client getClient(Equipment equipment) throws Exception {
+        if (Service.clientIdClientInstance.get(Service.clientIdEquipmentId.get(equipment.equipmentId)) == null) {
+            throw new ClientException("Client doesn't give equipment for fixing");
+        } else {
             return Service.clientIdClientInstance.get(Service.clientIdEquipmentId.get(equipment.equipmentId));
         }
     }
@@ -96,7 +96,7 @@ public class AdministratorActions implements IActionsWithEquipment {
         return sum;
     }
 
-    public int getReportAboutFixedEquipment(int amountFixedEquipment)  {
+    public int getReportAboutFixedEquipment(int amountFixedEquipment) {
         logger.info("amount of Fixed Equipment = " + amountFixedEquipment);
         return amountFixedEquipment;
     }

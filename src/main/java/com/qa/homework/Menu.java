@@ -105,7 +105,7 @@ public class Menu {
             }
             case 2: {
                 try {
-                  administratorActions.getEquipmentForFixing(null, null);
+                    administratorActions.getEquipmentForFixing(null, null);
                 } catch (Exception e) {
                     System.out.print("sss");
                 }

@@ -47,21 +47,4 @@ public class DirectorActionsTest {
         Assert.assertEquals(directorActions.fireEmployee(3).size(),new ConvertJsonToPOJO().convertJsonFileToListOfPojo().size() );
     }
 
-    @Test
-    public void testPayTax() {
-
-    }
-
-    @Test
-    public void testGetListOfEmployees() {
-
-    }
-
-    @Test
-    public void testIncreaseSalaryForEmployees() {
-    }
-
-    @Test
-    public void testGetRevenues() {
-    }
 }
